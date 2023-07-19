@@ -3,7 +3,7 @@
 #include <time.h>
 #include <math.h>
 
-#define ARRAY_SIZE 5
+#define ARRAY_SIZE 1000
 
 int isEven(int num) {
     return (num % 2 == 0);
@@ -131,18 +131,28 @@ void fibonacci(int num) {
 }
 
 int main() {
-    int inputs[ARRAY_SIZE];
+    int numRandomNumbers;
+
+    printf("Enter the number of random numbers you need: ");
+    scanf("%d", &numRandomNumbers);
+
+    while (numRandomNumbers < 1 || numRandomNumbers > 999) {
+        printf("Invalid input. Please enter a number between 1 and 999: ");
+        scanf("%d", &numRandomNumbers);
+    }
+
+    int inputs[numRandomNumbers];
 
     srand(time(NULL));
 
-    printf("Random Inputs:\n");
-    for (int i = 0; i < ARRAY_SIZE; i++) {
-        inputs[i] = rand() % 100 + 1; // Generate random numbers between 1 and 100
+    printf("\nRandom Inputs:\n");
+    for (int i = 0; i < numRandomNumbers; i++) {
+        inputs[i] = rand() % 1000; // Generate random numbers between 0 and 999
         printf("Input %d: %d\n", i + 1, inputs[i]);
     }
 
     printf("\nOutput for Each Input:\n");
-    for (int i = 0; i < ARRAY_SIZE; i++) {
+    for (int i = 0; i < numRandomNumbers; i++) {
         int number = inputs[i];
         printf("Input of %d is %d:\n", i + 1, number);
         printf("Even/Odd: %s\n", isEven(number) ? "Even" : "Odd");
@@ -157,8 +167,11 @@ int main() {
         printf("Composite: %s\n", isComposite(number) ? "Yes" : "No");
         printf("Perfect Number: %s\n", isPerfectNumber(number) ? "Yes" : "No");
         fibonacci(number);
+        printf("---------------------------------------------------------------------------------------------------------------------------------------------");
         printf("\n");
     }
 
     return 0;
 }
+
+
