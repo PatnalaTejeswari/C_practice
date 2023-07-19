@@ -1,0 +1,9 @@
+git clone -> to clone the git repository
+
+git status -> to check which files are modified.
+
+git diff -> what lines are changed.
+
+git commit -m "some message" -> for reference.
+
+git push -> to push the changes
