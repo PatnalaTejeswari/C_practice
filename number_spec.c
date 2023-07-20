@@ -151,9 +151,26 @@ int main() {
         printf("Input %d: %d\n", i + 1, inputs[i]);
     }
 
-    printf("\nOutput for Each Input:\n");
+    int evenNumbers[ARRAY_SIZE];
+    int oddNumbers[ARRAY_SIZE];
+    int evenCount = 0;
+    int oddCount = 0;
+
     for (int i = 0; i < numRandomNumbers; i++) {
         int number = inputs[i];
+
+        if (isEven(number)) {
+            evenNumbers[evenCount] = number;
+            evenCount++;
+        } else {
+            oddNumbers[oddCount] = number;
+            oddCount++;
+        }
+    }
+    printf("**********************************************************");
+    printf("\nOutput for Even Numbers:\n");
+    for (int i = 0; i < evenCount; i++) {
+        int number = evenNumbers[i];
         printf("Input of %d is %d:\n", i + 1, number);
         printf("Even/Odd: %s\n", isEven(number) ? "Even" : "Odd");
         printf("Square Root: %.2lf\n", squareRoot(number));
@@ -168,10 +185,29 @@ int main() {
         printf("Perfect Number: %s\n", isPerfectNumber(number) ? "Yes" : "No");
         fibonacci(number);
         printf("---------------------------------------------------------------------------------------------------------------------------------------------");
+        printf("**********************************************************************************************************************************************");
+
         printf("\n");
     }
 
-    return 0;
-}
-
+    printf("\nOutput for Odd Numbers:\n");
+    for (int i = 0; i < oddCount; i++) {
+        int number = oddNumbers[i];
+        printf("Input of %d is %d:\n", i + 1, number);
+        printf("Even/Odd: %s\n", isEven(number) ? "Even" : "Odd");
+        printf("Square Root: %.2lf\n", squareRoot(number));
+        printf("Square Number: %s\n", isSquareNumber(number) ? "Yes" : "No");
+        printf("Reverse: %d\n", reverseNumber(number));
+        printf("Sum of Digits: %d\n", sumOfDigits(number));
+        printf("Palindrome: %s\n", isPalindrome(number) ? "Yes" : "No");
+        printf("Prime: %s\n", isPrime(number) ? "Yes" : "No");
+        printf("Armstrong: %s\n", isArmstrong(number) ? "Yes" : "No");
+        printf("Factorial: %lu\n", factorial(number));
+        printf("Composite: %s\n", isComposite(number) ? "Yes" : "No");
+        printf("Perfect Number: %s\n", isPerfectNumber(number) ? "Yes" : "No");
+        fibonacci(number);
+        printf("---------------------------------------------------------------------------------------------------------------------------------------------");
+    
+    }
+    }
 
