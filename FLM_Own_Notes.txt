@@ -1,0 +1,3659 @@
+Start writing programs, if you face error - try resolving errors.
+Be Patience.
+Every program is written to achieve a functionality.	
+In interview, draw memory diagram for program and explain.	
+Ref the below content, Sir shared files, MCQs and Vector book(Assignment/concept).
+
+Primitive datatypes---> int, char, float
+Derived data type----> array.
+User data type--------> structures, unions. 
+
+https://www.javatpoint.com/compilation-process-in-c
+Till day7--> 30% syllabus is done.
+Till Loops--> 80% syllabus is done.
+#########################################################################################################333
+Day1: printf
+if no compilation error, number of printf == number of outputs.
+printf("%d",variablename); ------------------> syntax of print (To print anything on screen we need print statement).
+printf-> prints the everything inside the double quotes except the format specifier(%d, %f, %c). In place of format specifier the compiler prints the variable name.
+																		printf("sum is %d", varibalename);
+																		printf("%d",sum);
+																		printf("%d", is sum);
+
+
+Compiler knows: 
+1. keywords
+2. constants (1,2,.......)
+3. Operators ( +,-,*)
+4. functions   ( syntax-----> function_name("  "); or function_name()
+
+Basic Syntax of C:
+int main()
+{
+	return 0;
+}
+
+To store anything in system memory, we use VARIABLES. Variable is nothing but a memory or apart of memory, used to store data.
+Syntax: datatype variablename;
+#########################################################################################################333
+
+Day2: Variables
+Variable declaration:
+int a; // Declaration
+a=10; // Initialization
+
+1.c----> compile (scans only code line by line, if error unte exe file generate avadu)-----> .exe----------> run (printf statements ikkdada print avtai).
+
+2variables cannot have same name.
+example: int a=20; printf("a=5d\n",a);a=30; int a=40; printf("a=%d\n",a); // here 2times the memory gets allocated & compiler gets confused).
+for run-time inputs, we use scanf() function. scanf("%d", &variablename);-----> syntax.
+//Every variable will have some address.
+ Example:
+ int main()
+ {
+ int num1=10,num2=20,sum;
+ scanf("%d",&num1);
+ scanf("%d",&num2);
+ sum=num1+num2;
+ printf("sum=%d\n",sum);
+ return 0;
+ }
+ // Here it waits for user input, though the memory is created and 10 is stored it gets replaced with user input.
+ from the above code the cursor waits for user input where the end user cant understands what's happening. So we use printf statement before the scanf as shown below;
+  int main()
+ {
+ int num1=10,num2=20,sum;
+ printf("Enter num1:");        or    printf("enter num1 and num2);
+ scanf("%d",&num1);                  scanf("%d %d",&num1,&num2);
+ print("Enter num2:");
+ scanf("%d",&num2);
+ sum=num1+num2;
+ printf("sum of %d and %d=%d\n",num1,num2,sum);
+ return 0;
+ }
+ 
+//Header files--> Consists of function declaration.
+example: #include<stdio.h>
+
+Variable name rules:
+	1. Variable name must start with an alphabet/specialsymbol i.e; underscore (_).
+		1.1 Remaining can have either alphabets/digits/specialsymbol(_). 
+				Example: int num1;-----> valid
+						 int num2;-----> valid
+						 int sum;------> valid
+						 int sum123;----> valid
+						 int su123um;----> valid
+						 int 1sum;-------> invalid
+						 int dig_t;------> valid
+						 int name_y;-----> valid
+						 int _sum;--------> valid
+						 int su m;--------> invalid
+						 int su*m;-------> invalid
+						 int su+m;--------> invalid
+
+char datatype---> stores 1byte
+format specifier: %c (Specifies in which format you want to print output).
+It is derived from int data type only.
+char data type is used to store character constant ( Any character resides inside the single quotes is called character constant).
+- Every character constant associated with an integer value (ASCII value).
+
+
+example:
+int main()
+{
+int num1=65;
+char c= 'a';
+printf("%d\n",num1); //65
+printf("%c\n",num1); //A
+printf("c=%d\n",c);   //97
+printf("c=%d\n",c);   // a
+return 0;
+}
+
+printf("%d\n",65); //65
+printf("%c\n",65); //A
+printf("%d\n",'&'); //38
+#########################################################################################################333
+
+IMP:------ Day3:Data Types: Ref source doc for brief
+
+In memeory, every byte has an address.
+1byte == 8bits
+1KB   == 1024bytes
+1MB   == 1024KB
+1GB   == 1024MB
+
+int a=12;		
+						a
+	------------------------------------------
+	|			|		 |			|		 |
+	|  0000		|  0000	 |   0000   |   0000 |
+	|	0000	|0000	 | 	0000	|	1100 |
+	|			|		 |			|		 |
+	------------------------------------------
+				103		102			101		100	
+				
+Decimal------> Binary conversion Example: Decimal of (12) = 1100 in binary
+Binary-------> Decimal conversion Example: Binary of (1100)= 12 in decimal
+
+1-bit : No. of combinations are 2 i.e;
+							0---> 0
+							1---> 1
+	1-Bit== 0 to1
+2-bits : No. of combinations are 4 i.e;
+							2 1
+							---
+							0 0----> 0
+							0 1----> 1
+							1 0----> 2
+							1 1----> 3
+	2-Bits== 0to 3
+3-bits : No. of combinations are 8 i.e;
+						   4 2 1
+						   ------
+						   0 0 0----> 0
+						   0 0 1----> 1
+						   0 1 0
+						   0 1 1
+						   1 0 0
+						   1 0 1
+						   1 1 0
+						   1 1 1-----> 7
+	3-Bits== 0to7
+4-bits : No. of combinations are 16 i.e;
+						  8  4 2 1
+						  ----------
+						   0 0 0 0-------> 0
+						   0 0 0 1-------> 1
+						   0 0 1 0-------> 2
+						   0 0 1 1
+						   0 1 0 0
+						   0 1 0 1
+						   0 1 1 0
+						   0 1 1 1
+						   1 0 0 0
+						   1 0 0 1
+						   1 0 1 0
+						   1 0 1 1
+						   1 1 0 0
+						   1 1 0 1
+						   1 1 1 0
+						   1 1 1 1------->15
+	4-Bits== 0 to 15
+    8-Bits== 0 to 255
+-----------> if no.of bits are "n", what is range: 0 to (2*n)-1 .
+
+If no. of bits are "n" then combinations possible are 2*n (i.e; 2 power n).
+				n= 1 then c=2
+				n= 2 then c=4
+				n= 3 then c=8
+				n= 4 then c=16
+
+2*7		2*6		2*5		2*4		2*3		2*2		2*1		2*0
++/-128	64		32		16		 8		 4		 2		 1	
+---------------------------------------------------------------------------------------------------------
+  0      0       0       0		 0		0		0		0 ------------> 0  0
+  0      0       0       0		 0		0		0		1 ------------> 1  1
+  0      0       0       0		 0		0		1		0 ------------> 2  2
+  0      0       0       0		 0		0		1		1 ------------> 3  3
+  0      0       0       0		 0		1		0		0 ------------> 4  4
+  .                                                     .
+  .                                                     .
+  .                                                     .
+  0      1       1       1		 1		1		1		1 -------------> 127  127
+  1      0       0       0		 0		0		0		0 -------------> 128  -128
+  1      0       0       0		 0		0		0		1 -------------> 129  -127
+  1      0       0       0		 0		0		1		0 -------------> 130  -126
+  1      0       0       0		 0		0		1		1 -------------> 131  -125 
+  1      0       0       0		 0		1		0		0 -------------> 132  -124
+  .                                                     .
+  .                                                     .
+  .                                                     .  
+  1      1       1       1		 1		1		0		1 -------------> 253  -3
+  1      1       1       1		 1		1		1		0 -------------> 254  -2
+  1      1       1       1		 1		1		1		1 -------------> 255  -1
+
+FYI: At 2*7, if it is 0 then +ve and if it is 1 then -ve.
+signed char (8bits)----> -128 to 127 i.e;  -2*(n-1) to 2*(n-1)-1
+if n= 12bits, then the range is 
+if n= 30bits, then the range is 
+
+8-bits ----------------> min value: 0, max value: 255 (Range: 0 to 255) i.e; 0 to (2*n)-1
+
+Qualifiers: 
+	2kinds of qualifiers: 
+			1. Size Qualifier (short, long)-- Size qualifiers are not applicable on char data-type.
+			2. Sign Qualifier ( Signed, Unsigned)
+								Signed---> Stores both +ve n -ve number.
+								Unsigned--> Stores only +ve numbers.
+					Default sign qualifier is signed.
+char ---------> 1byte --------> (0 to 255)
+short int ----> 2bytes -------> 16bits ( say 0 to (2*16)-1 i.e; 0 to 65535. 
+int ----------> 4bytes
+long int -----> 8bytes
+
+
+int a=20;
+int a=-20;
+
+char c=12;
+char c=-12;
+
+
+int -------> short int
+		|--> int
+		|--> long int
+char -------> signed char
+		|---> unsigned char
+		
+char ---> 1byte %c
+int  ---> 4bytes %d
+short int = 10; ---> %hd
+unsigned short int= 10; ----> %hu
+long int = 10; ---> %ld
+unsigned long int= 10; ----> %lu
+		
+Example:
+int main()
+{
+ char c;
+ short int s;
+ int i;
+ long int l;
+}
+#############################################################################################################33
+
+Day4: Operators (for operators we should know the precedence and associativity rules)
+
+1) Assignment operator: (=)-----> It's a "binary operator".
+IMP--Rule: LHS must be always a memory (ntg but variable).
+Say: 10+20
+	Here, + ----> is an operator
+		  10,20--> are operands (data on which operation is performed).
+		  To perform an operation, we need minimum of 2operands.
+		  Depending upon no.of operands to perform the operation:
+				3types: 1) Unary operators ( 1-operand to perform the operation).
+						2) Binary operators (2-operands to perform the operation).
+						3) Ternary opeartors( 3-operands to perform the operation).
+Example: 
+#include<stdio.h>
+int main()
+{
+int i =60;
+i=70; // 70
+70=60; // gives compilation error coz the LHS is not a variable, it's a constant.
+i+10=20; // gives compilation error coz the LHS is not a variable, it's an expression.
+printf("i=%d\n",i);
+return 0;
+}
+
+continution of yesterday topic:
+unsigned character range: 
+0 1 2 3 4 ......... 252 253 254 255	
+Here, it goes in a circular; it doesnt have -ve values.	
+		
+		255 is max                 0 is min
+		max+1 = 0(min)             min-1 = 255(max)
+		max+2 = 1                  min-2 = 254
+Example: 
+-3 i.e; min-3
+		min-1-2
+		max-2 = 253
+Signed character range:
+-128 -127 -126........... -1 0 1 2 3....126 127
+
+unsigned short int: 
+0 1 2 3 4................65533 65534 65535
+
+signed short int:
+-32768  -32767  -32766............. -1 0 1 2 3..........32766 32767
+
+unsigned short int i;
+i=65535;
+printf("i=%hu\n",i);  // 65535
+printf("i=%hu\n",i+3);  // 2
+
+Inorder to calculate easily, use below procedure;
+for max, convert to max+1+x (for this we should know the max and min values of data type)
+		i+3 = 65535+3
+			=max+1+2
+			=0+2
+			=2
+			
+		i+86 = 65535+86
+			 = max+1+85
+			 = 0+85
+			 =85
+for min,convert to min-1-x
+
+Example: Signed 
+#include<stdio.h>
+int main()
+{
+short int min= -32768; 
+short int max= 32767; 
+printf("min=%hd,max=%hd\n",min,max); //-32768, 32767
+printf("min=%hd,max=%hd\n",min-1,max+1); // 32767, -32768
+
+printf("min=%hd,max=%hd\n",min-10,max+10);  // 32758, -32759
+
+short int i=32854;
+short int j=-32780;
+printf("i=%hd,j=%hd\n",i,j);
+}
+
+Explanation:
+printf("min=%hd,max=%hd\n",min-1,max+1); // 32767, -32768
+		min 				max
+	min-1= -32768-1			max+1= 32767+1
+		= 32767				-32768
+printf("min=%hd,max=%hd\n",min-10,max+10);  // 32758, -32759
+		min-10					max+10
+		----------------------------------
+		-32768-10				32767+10
+		min-1-9  				max+1+9
+		max-9					min+9
+		32767-9					-32768+9
+		32758					-32759
+printf("i=%hd,j=%hd\n",i,j);
+		  i																	j
+---------------------------------------------------------------------------------------------------
+		32854															 -32780
+		max+87 i.e( max of signed int is 32767-32854)					min-12( -ve lo undi value so convrt to min i.e; diff between -32780 and -32768 is 12)
+		max+1+86														min-1-11
+		-32768+86														max-11
+		-32682															32767-11
+																		32756
+Back to operators:
+2) Arithmetic operators:
++ ----> Addition
+- ----> Subtraction
+* ----> Multiplication
+/ ----> Division // 5/2-->2 (Quotient is the result)
+% ----> Modular division // 5%2---> 1 (Remainder is the result)
+
+Precedence (Priority) and Associativity:  Ref the doc for these. 
+Rule:  *,/,%,>,+,- ( * and / have same priority)
+	   When we have 2 or more operators with same precedence then associativity comes into picture.
+	   Execution always starts from left to right.
+
+Example: 
+3+2*6------------> ((3+2)*6) ----> 30
+         |
+		 --------> (3+(2*6)) ---> 15 (correct ans)
+		 
+3+2*6/2------------> 3+(2*6)/2 ---> 3+((2*6)/2)---> (3+((2*6)/2)---> 9 (correct ans) ( Since execution starts from left to right)
+         |
+		 --------> 3+2*(6/2)
+		 
+int main()
+{
+int num1=20,num2=30,sum;
+sum=num1+num2;    
+printf("sum=%d\n",sum);      //50 
+int a,b,c,d;
+a=b=c=num1;
+printf("a=%d,b=%d,c=%d\n",a,b,c,d);    //     20,20,20
+return 0;
+}
+
+Explanation:
+(sum=(num1+num2));
+
+a=b=c=num1;
+	Here we have 3assignment operators
+	(a=(b=(c=num1)));
+	/* c=num1;										a=20, b=20, c=20
+		b=c;
+		a=b;
+		*/
+Expression:
+count number of operators:
+	If different, then follow precedence rules.
+	If same, follow associativity rules.
+	
+#include <stdio.h>
+int main()
+{
+int i,j,k;
+i=j=k=10;
+printf("%d,%d,%d\n",i,j,k);
+i=j=5=k=10;
+return 0;
+}
+
+Ouput: Compilation error.
+Explanation:
+/* k=10; 
+	j=k;
+	i=j;
+*/				
+/&*k=10;
+	5=k; // memory should be a variable but here, it is constant.
+	k=5;
+	i=j;
+*/
+########################################################################################################33333
+
+Day5: Operators with examples
+
+int main()
+{
+int a=5,b=2;
+int c;
+c=a/b;   // 2
+printf("%d\n",c);
+c=a%b;
+printf("%d\n",c); //1
+return 0;
+}
+
+// interger / interger will be the result also integer.
+------
+int main()
+{
+int a=5,b=2;
+float c;
+c=a/b;   // 2.0
+printf("%f\n",c);
+c=a%b; // real modular division
+printf("%f\n",c); //1.0
+return 0;
+}
+
+// We cant perform operation between 2different data types.
+	Here Data type-Conversion happens.
+		1. Implicit type conversion---> Compiler does
+		2. Explicit type conversion---> Developer does
+If we try to convert int to float then the compiler automatically converts the int to float and result will be in float.----------------> Implicit type conversion.
+------
+If you perform division on real number the quotient is always real number and the remainder will be zero.
+example: 
+5/2.0
+==5.0/2.0
+==2.5 (quotient), 0 is the remainder.
+//Real modular dicison is always "ZERO". In Compiler, if we perform real modular division we get compilation error.
+
+int main()
+{
+int a=5;
+float b=2,c;
+c=a/b;   
+printf("%f\n",c); //2.5
+c=a%b;
+printf("%f\n",c); //Compilation error
+return 0;
+}
+
+Ouput: Compilation error
+-------
+int main()
+{
+float a=5,b=2,c;
+c=a/b;   
+printf("%f\n",c); //
+c=a%b;
+printf("%f\n",c); //
+return 0;
+}
+
+Output: Compilation error (Real moduar division is always a compilation error).
+--------
+int main()
+{
+int a=5,b=2;
+float c;
+c=a/(float)b;   // Explicitly variable b is changed to float from int, so b=2.0 for this statement. (5.0/2.0)--> automatically "a" value is converted by compiler( implicit type casting).
+printf("%f\n",c); // 2.5
+return 0;
+}
+--------
+int main()
+{
+int a=5,b=2;
+float c;
+c=a/(float)b;   // Explicitly variable b is changed to float from int, so b=2.0 for this statement. (5.0/2.0)--> automatically "a" value is converted by compiler( implicit type casting).
+printf("%f\n",c); //
+c=a%(float)b;
+printf("%f\n",c); // for modular division the compiler cant convert automatically whereas for normal division the compiler does.
+return 0;
+}
+Ouput: Compilation error.
+------------
+int main()
+{
+int a=5;
+float b=2;
+float c;
+c=a/b;
+printf("%f\n",c); //2.5
+c=a/(int)b;       //5/2==2 (int divsion div will always be int but we have assigned to float variable so  output is 2.0).
+printf("%f\n",c); //2.0
+return 0;
+}
+-----
+int main()
+{
+int a=5;
+float b=2;
+float c;
+c=a%(int)b;       //5%2 ==1    
+printf("%f\n",c); //1.0
+return 0;
+}
+--------------------------------------------------
+3) Relational/ Comparision/ Binary operator: For these the output will be only 2 (i.e; yes or no).
+If output is TRUE---> 1
+If output is FALSE---> 0
+>       Greater than
+>=      Greater than equals to
+<       less than
+<=      less than equals to
+==      equals to  (Comparision operator)
+!=      not equals to 
+
+Example:
+int main()
+{
+int a=20,b=10;
+printf("%d,%d,%d,%d,%d,%d\n",a>b,a>=b,a<b,a<=b,a==b,a!=b);
+return 0;
+}
+Output: 1,1,0,0,0,1
+----------
+
+int main()
+{
+int a=10,b=20;
+a=b;
+printf("a=%d,b=%d\n",a,b);  //Output: a=20,b=20 (after printing a and b the cursor waits in next line as \n is present).
+return 0:                   // the code returns from here and if you ignore this line then the compiler goes to next line too.
+printf("%d,%d\n",a==b,b=a); //1,20 (b=a; which means result of b=a is nothing but value of b).
+return 0;
+}
+-------------------
+int main()
+{
+int a=-5,b=-10,c=-15;
+printf("%d\n",a>b>c);  // ((-5>-10)>-15); (1>-15) so output is TRUE i.e; 1
+printf("%d\n",a<b<c);  // ((-5<-10)<-15); (0<-15) so output is FALSE i.e; 0
+printf("%d\n",a>b<c);    // FALSE i.e; 0
+return 0;
+}
+Here, we will check precedence but same operands so, associativity.
+----------
+
+int a=5,b=10,c=6;
+int result = a+b>c;     // ((a+b)>c); (15>6); so output is TRUE i.e; 1
+ a>b+c;
+ ((a>(b+c))  // (5>(16)); Output is FALSE i.e; 0
+------------
+
+Program1: Write a C-program to input 2numbers and swap them.
+Type1: Using third variable.
+
+#include <stdio.h>
+int main()
+{
+int num1,num2;
+printf("Enter numq and num2:");
+scanf("%d,%d", &num1,&num2);
+printf("Before swaping num1=%d,num2=%d\n",num1,num2);  // num1=20,num,2=10
+int temp =num1;
+num1=num2;
+num2=temp;
+printf("Before swaping num1=%d,num2=%d\n",num1,num2);  // num1=10,num,2=20
+return0;
+}
+-------------
+Type2: Swap without third variable.
+int main()
+{
+int a=5,b=10;
+b=(a*b)/(a=b);
+printf("a=%d,b=%d\n",a,b); // a=10,b=5
+a=(a*b)/(b=a);
+printf("a=%d,b=%d\n",a,b); // a=10,b=5
+return 0;
+}
+--------------
+a=5,b=10;
+b=(a*b)/a=b; // (((a*b)/a)=b) follow goes from left to right,left side should always be a variable but here it's expression so, output is "Compilation error".
+##################################################################################################################################################
+Day6: Operators cont..
+4) Logical Operators:
+		Used to combinie more than 1 expressions.
+&& -----> Logical AND 
+|| -----> Logical OR
+!  -----> Logical NOT
+
+op1   op2   ||   &&
+F      F    F	 F
+F      T	T	 F
+T      F	T	 F
+T      T    T 	 T
+
+TRUE--->1
+FALSE-->0
+
+HINT: Compiler side
+T || SKIP == T
+T && 
+F && SKIP == F
+
+op1 && op2
+op1 || op2
+
+The logical AND,OR considers the op1 completely as True or False. Similarly with op2 as well. Finally it gives the output by considering the op1, op2.
+
+IMP --- Any value apart from 0 in system is treated as TRUE.
+Example:
+int main()
+{
+printf("%d,%d\n",10&&20,10||20);   // 1,1
+printf("%d,%d\n",10&&0,10||0);	   // 0,1 
+printf("%d,%d\n",0&&20,0||20);     // 0,1
+return 0;
+}
+--------------
+Go with precedence and associavity because many operators exist.
+int main()
+{
+int a=10,b=10,c=0;
+c=a>=0 && b>=0;
+printf("%d\n",c);   T && T---> T i.e; 1   
+a=10;
+b=-5;
+c=a>=0 && b>=0;
+printf("%d\n",c);   T && F---> F i.e; 0  
+return 0;
+}
+------------------------------
+IMP:
+Un-Initialized variable will have garbage values.
+// Priority: AND, OR, NOT.
+
+int main()
+{
+int a=-5,b=0,c=3,d;
+d=(a=b) && (b=c);
+printf("%d,%d,%d,%d\n",a,b,c,d);   // 0 && 3 ------> F && T -----> F i.e; 0.
+
+d=(a=b) || (b=c);
+printf("%d,%d,%d,%d\n",a,b,c,d);   // 0 || 3 ------> F || T -----> T i.e; 1.
+
+d=(b=c) || (c=a) || (a=b);         // d=((b=c)) || ((c=a) || (a=b));
+printf("%d,%d,%d,%d\n",a,b,c,d);   // 3 || -5 || 0 ------> T || SKIP || (a=b)----> T || (a=b) ----> T i.e; 1.
+
+d=(b=c) && (c=a) && (a=b);         // d=((b=c)) && ((c=a) && (a=b));
+printf("%d,%d,%d,%d\n",a,b,c,d);   // 3 && -5 && 0 -----> (T && T) && (a=b) ----> T && F ----> F i.e; 0.
+
+d=(b=c) || (c=a) && (a=b);         // d=((b=c)) || ((c=a) && (a=b));
+printf("%d,%d,%d,%d\n",a,b,c,d);   // 3 || -5 && 0 -----> (T || SKIP rest of exp) ----> T i.e; 1.
+
+d=(a=b)&&(b=c)||(c=a);              // d=((a=b))&&((b=c)||(c=a));
+printf("%d,%d,%d,%d\n",a,b,c,d);   // 0 && 3 || -5 -----> (F &&T) || -5) ----> F || T----> T i.e; 1.
+
+return 0;
+}
+----------------
+Program:
+int main()
+{
+int x=10;
+x=x+1;
+printf("x=%d\n",x); // x=11
+return 0;
+}
+
+Similarly, We have an operator called "Increment and Decrement", if you want to increase and decrease the variable value by 1.
+
+Increment(++) and Decrement(--):----------> Unary operator.
+int main()
+{
+int x=10;
+x++;                //x=x+1;
+printf("x=%d\n",x); // x=11
+return 0;
+}
+---------
+int main()
+{
+int x=10;
+x--;                //x=x-1;
+printf("x=%d\n",x); // x=9
+return 0;
+}
+------------
+int main()
+{
+int x=10;
+10++;         // (10=(10+1));---------> Variable shouldn't be a constant.
+printf("x=%d\n",x);
+return 0;
+}
+Ouput: Compilation error
+-----------------------------
+Increment: 
+	Pre-increment---> operator before operand
+	Post-increment---> operator after operand
+Decrement: 
+	Pre-decrement---> operator before operand
+	Post-decrement---> operator after operand
+
+Example:
+int main()
+{
+int x=10;
+x++;                // Post increment----> x=x+1;
+printf("x=%d\n",x); // x=11
+x=10;
+++x;				// Pre-increment-----> x=x+1;
+printf("x=%d\n",x); //x=11
+return 0;
+}
+------------
+int main()
+{
+int x=10;
+x--;                // Post decrement----> x=x-1;
+printf("x=%d\n",x); // x=9
+--x;				// Pre-decrement-----> x=x-1;
+printf("x=%d\n",x); //x=8
+return 0;
+}
+
+Importance of Pre/Post-Increment and Decrement is where we use more than one operand.
+Example:
+
+#include<stdio.h>
+int main()
+{
+int x=5,y;
+y=++x;
+printf("x=%d,y=%d\n",x,y);   //x=6,y=6
+x=5;
+y=x++;
+printf("x=%d,y=%d\n",x,y);   //x=6,y=5
+x=5;
+y=--x;
+printf("x=%d,y=%d\n",x,y);   //x=4,y=4
+x=5;
+y=x--;
+printf("x=%d,y=%d\n",x,y);   //x=4,y=5
+return 0;
+}
+
+Explanation:
+Pre-increment: First increments the value then assign the value. (y=++x;)
+	 x=x+1;
+	 y=x;
+Post-increment: First assigns the value then increments the value. (y=x++;)
+	y=x++;
+	y=x;
+	x=x+1;
+Pre-decrement: First decrements the value then assign the value. (y=--x;)
+	 x=x-1;
+	 y=x;
+Post-decrement: First assigns the value then decrements the value. (y=x--;)
+	y=x--;
+	y=x;
+	x=x-1;
+
+Logical NOT: Accepts only one operand as it is uninary operator.
+!op1
+
+!T=F
+!F=T
+
+Example:
+int main()
+{
+int a=10,b=0,c=-5,result;
+result=!a;
+print("result=%d\n", result);   // 0
+result=!b;
+print("result=%d\n", result);   // 1
+result=!c;
+print("result=%d\n", result);   // 0
+#############################################################################################
+Day7: Operators cont..
+
+Bitwise Operators: Operation performed on individual bits.
+& ----> Bitwise AND
+| ----> Bitwise OR
+^ ----> Bitwise XOR
+<< ----> Bitwise Left shift
+>> ----> Bitwise right shift
+~ ----> 1's compliment
+	
+			|	&	^
+------------------------
+0    0		0	0	0
+0    1		1	0	1
+1    0		1	0	1
+1	 1		1	1	0
+
+Example:
+int a=20,b=25,c,d;
+int result =a&&b; // T&&T----> T i.e; 1
+int result2 =a&b; // 16
+
+Explanation:  If +ve value iste we consider +128 and if -ve value iste then -128
+128		64		32		16		8		4		2		1
+--------------------------------------------------------------
+0		0		0		1		0		1		0		0 ---------->20
+0		0		0		1		1		0		0		1 ---------->25
+_______________________________________________________________
+0   	0		0		1		0		0		0		0 ----------> a&b ==16
+0		0		0		1		1		1		0		1 ----------> a|b ==25
+0		0		0		0		1		1		0		1 ----------> a^b ==13
+_______________________________________________________________
+
+#include<stdio.h>
+int main()
+{
+int a=25,b=20,c,d;
+c = a&b;
+d = a|b;
+int e = a^b;
+printf("%d,%d,%d,%d,%d\n",a,b,c,d,e);    // 25,20,16,29,13
+return 0;
+}
+---------------------
+Q) How negative numbers are stored inside memory?
+A) In 2's complement form.
+		2's complement(n) = -n
+		2's complement(50) == -50
+		2's complement(-50) == +50
+
+Example:
+-20 ------------> 2's complement of +20.
+2's complement(+20) ----> 1's complement(+20)+1
+						11101011 + 1
+		1's complement(+20) == 0001 0100
+							   1110 1011 ---> 1's comp(+20)
+							   0000 0001 ---> +1 (to get 2's complement form of +20)
+							   _______11-------> carry bits
+							   1110 1100
+-128		64		32		16		8		4		2		1
+  1			 1		 1		 0		1		1		0		0 ------> -20
+  
+V.V IMP-----------> 2's complement(num) == -num
+2's complement(num) == 1's complement(num)+1
+1's complement(num) == 2's complement(num)-1
+
+Example:
+int a=25,b=20,c,d;
+printf("%d\n",~b); // 1's complememnt of b? // -21
+printf("%d\n",~456); //-457
+printf("%d\n",~-87); //86
+printf("%d\n",~1); //-2
+printf("%d\n",~0); //-1
+
+Explanation:
+~b:
+1's complement(+20) == 2's complement(+20)-1
+					== -20-1
+					== -21
+~456:
+1's complement(+456) == 2's complement(+456)-1
+					== -456-1
+					== -457
+--
+Bitwise left shift and Bitwise right shift:
+Bitwise operations are not applicable on float numbers. (can be done on only integers).
+
+leftshift:
+	.... 256 128 64 32 16 8 4 2 1
+Example: 		LSB           MSB
+20 -----> 		0 0 0 1 0 1 0 0 ----------------> 20
+			  0 0 0 1 0 1 0 0   ----------------> 20<<1 (left shift by 1) --> 40
+			0 0 0 1 0 1 0 0 	----------------> 20<<2 (left shift by 2) --> 80 
+		  0 0 0 1 0 1 0 0 		----------------> 20<<3 (left shift by 3) --> 160
+Note: The LSB bits will be removed from memory which is taken care by OS, and zero's will be appended to MSB at empty space. (for positive given value)
+
+Formula: 20<<n == 20 multiplied (2 power n)
+20*2 --> 40
+20*4 --> 60
+20*8 --> 160
+
+char c=20;
+printf("d",c<<4);
+
+rightshift:
+				128 64 32 16 8 4 2 1
+Example: 		LSB           MSB
+20 -----> 		0 0 0 1 0 1 0 0 ----------------> 20
+			      0 0 0 1 0 1 0 0 --------------> 20>>1 (right shift by 1) --> 10
+				    0 0 0 1 0 1 0 0 ------------> 20>>2 (right shift by 1) --> 5
+					  0 0 0 1 0 1 0 0 ----------> 20>>3 (right shift by 1) --> 2
+Note: The MSB bits will be removed from memory which is taken care by OS, and zero's will be appended to LSB at empty space. (for positive given value)
+Formula: 20>>n == 20 divided by (2 power n)
+20/2 --> 10
+20/4 --> 5
+20/8 --> 2
+20/16 --> 1 (20>>4)
+20/32 --> 0 (20>>5)
+
+NOTE: for right shift the value will decrement in power's of 2.
+	  for left shift the value will increment in power's of 2.
+
+Basically, Divisions(Dividing to proper equal parts) are developed from addition.
+	2)4(2				2)8(4			2)20(10							20)2(0																				1)0(0			0)1(
+	 2+2				2+2+2+2			2+2+2+2+2+2+2+2+2+2				  ?? impossible so the value will be coz we can get 2 by adding 20.									0+0+0===?
+
+Program on Bitwise left shift and right shift:
+#include<stdio.h>
+int main()
+{
+int a=25,b=20;
+printf("%d\n",a<<2);
+printf("%d\n",b>>2);
+printf("%d\n",a>>2);
+printf("%d\n",-10>>5);
+printf("%d\n",31>>5);
+printf("%d\n",-31>>5);
+printf("%d\n",64>>5);
+
+-----
+Program: SWap2numbers without third variable:
+int a= 50000,b=75000,c;
+int a=20,b=30;
+b=(a*b)/(a=b);---------> converts to assembly then to binary.
+
+Explanation:
+If we do int a=20,b=30;-----------> the output will be swapped as expected i.e; a=30,b=20
+If we do int a= 50000,b=75000; ----> the output with compiler will be imperfect it loads some garbage in "b". Because in CPU memory the register size gets exceeded and stores the garbage for (a*b) operation itself, as it is an intermediate result. ( Register size depends on OS and it will be in the power's of 2).---> Operation performed on DECIMAL value.
+-Independent of hardware our code has to work i.e; Embedded.
+	 To get the proper output, the only solution is bitwise operator.(without integer overflow)-> Operation performed on BITS, so no overflow.
+	 #include<stdio.h>
+	 int main()
+	 {
+	 int a=50000,b=75000<c;
+	 a=a^b;
+	 b=b^a;
+	 a=a^b;
+	 printf("a=%d,b=%d\n",a,b);
+	 return0;
+	 }
+########################################################################################################3
+Day8: Control Statements.
+Control statements: COntrol the flow of execution of instructions. (we can skip or run the same instruction multiple times).
+		1. Conditional control statement.
+		2. Un-conditional control statement.
+
+Program:WPA to input 2numbers and print the highest number:
+
+#include<stdio.h>
+int main()
+{
+int num1, num2;
+printf("Enter num1 and num2");
+scanf("%d%d",&num1,num2);
+num1>num2;
+printf("%d is highest number\n",num1);
+num2>num1;
+printf("%d is highest number\n",num2);
+return 0;
+}
+// In the above code, both the printf will print, but ere our criteria is to print either yes or no so we have a concept in C i.e; CONTROL STATEMENTS (changes the normal flow).
+
+1) if condition: It allows if the condition is TRUE.
+ syntax:
+		if(condition)
+		{
+		
+		}
+Example:
+#include<stdio.h>
+int main()
+{
+int num1, num2;
+printf("Enter num1 and num2");
+scanf("%d%d",&num1,num2);
+
+if(num1>num2){
+printf("%d is highest number\n",num1);
+}
+if(num2>num1){
+printf("%d is highest number\n",num2);
+}
+return 0;
+}
+Output: 35 is highest number. (num1=20,num2=35)
+// From the above code, the CPU time/ utulization will not be effective, coz all the if statements executes).
+
+2) if...else condition:
+ else condtion depends upon if statement.(Here's no specific condition that else should also have condition.)
+	We can have multiple if blocks without an else block.
+	where as we cannot have an else block without an if block as precedor.
+Examples:
+#include<stdio.h>
+int main()
+{
+if(5)            
+{
+printf("Hello world"); // Hello world
+return 0;
+} }
+---------
+#include<stdio.h>
+int main()
+{
+if(0)            
+{
+printf("Hello world"); // Blank output
+return 0;
+}
+}
+----------------------
+#include<stdio.h>
+int main()
+{
+else            
+{
+printf("Hello world"); // preceder if is missing
+return 0;
+}
+}
+----------------
+int main()
+{
+if(1)            // if(0); then in  output else block gets executed.
+{
+printf("In if block\n"); 
+}
+else{
+printf("In else block\n");
+}
+return 0;
+}
+Output: In if block.
+----------------------------------
+int main()
+{
+if(0)            
+{
+printf("In if block\n"); 
+}
+printf("Hello world"); 
+else{
+printf("In else block\n");
+}
+return 0;
+}
+Output: Compilation error.(There shouldnt be any other statement between if......else condtion). There's shouldnt be any statement in-between means else should be immediate precedor to if block.
+----------
+int main()
+{
+if(0)            
+printf("In if block\n"); 
+printf("Hello world"); 
+/*else{
+printf("In else block\n");
+}*/
+return 0;
+}
+Output: Hello world.
+
+No {} for if condition, here the drawback is the immediate statement of if is considered as the condtion and the next lines will be executed.(remaining will go under main function.
+------------------------
+2-inputs and highest 
+#include<stdio.h>
+int main()
+{
+int num1, num2;
+printf("Enter num1 and num2");
+scanf("%d%d",&num1,num2);
+if(num1>num2)
+printf("%d is highest number\n",num1);
+else
+printf("%d is highest number\n",num2);
+return 0;
+}
+Here the either if or else will be executed.
+--------------------------------------------------
+Program: WPA to input 3-different numbers and print the highest.
+#include<stdio.h>
+int main()
+{
+int num1,num2,num3;
+printf("enter num1,num2,num3:");
+scanf("%d%d%d",&num1,&num2,&num3);
+if(num1>num2 && num1>num3)
+printf("%d is highest number\n",num1);
+if(num2>num1 && num2>num3)
+printf("%d is highest number\n",num2);
+if(num3>num1 && num3>num2)
+printf("%d is highest number\n",num3);
+}
+
+To replace the above code;
+if(num1>num2 && num1>num3)
+printf("%d is highest number\n",num1);
+else if(num2>num1 && num2>num3)
+printf("%d is highest number\n",num2);
+else
+printf("%d is highest number\n",num3);
+}
+
+Here we can use any number of else if condition.
+---------------------
+Program: WPA to input an positive integer check whether it is even or odd
+#include<stdio.h>
+int main()
+{
+unsigned int num;  //we have mentioned +ve integer so considering unsigned.
+printf("Enter the num:");
+scanf("%d",&num1);
+if(num%2==0)
+{
+printf("Given number %d is even\n",num);
+}
+else
+{
+printf("Given number %d is odd\n",num);
+}
+return 0;
+}
+Explanation:
+num-------> divide by2 
+if remainder ==0
+		 then it is even
+else 
+    it is odd
+------------------------------------------
+Method2: Even odd
+if(num%2)
+{
+printf("Given number %d is odd\n",num);
+}
+else{
+printf("Given number %d is even\n",num);
+}
+---------------------
+main()
+{
+int a=1,b=2,c=3;
+if(a<1,b=c)             // if(1<1,3) ---->if(F,T) right most condition ni consider cheskuntadi if statement(comma operator execution goes from left to right). so here T is considered.
+{
+printf("a=%d,b=%d,c=%d\n",a,b,c); // a=1,b=3,c=3
+}
+}
+-------------------
+main()
+{
+a=1,b=2,c=3;
+if(a=b,b=c,c=a,c>a)        // if(T,T,T,F)--------> so if(F)--->if(0) so it wont enter into if block.
+{
+printf("in if\n");
+}
+else{
+printf("in else\n");
+printf("a=%d,b=%d,c=%d",a,b,c);
+}
+
+Explanation:
+The compiler enters to else block, 
+output: in else
+		a=2,b=3,c=2
+-----------------------------------
+Empty if block (to confuse):
+Example1:
+#include<stdio.h>
+int main()
+{
+if(10){
+}
+else 
+printf("In else block\n");
+return 0;
+}
+Output: Blank output
+---
+Example2:
+#include<stdio.h>
+int main()
+{
+if(10);
+printf("hello world\n");
+else 
+printf("In else block\n");
+return 0;
+}
+Output: Compilation error.
+
+WPA to input an alphabet/character and find whether given character is ovwel or consonant.---------> Homework
+##############################################################################################################
+Day9: Control Statements cont... Scope, Lifetime
+#include<stdio.h>
+int b;
+int main()
+{
+int a;
+printf("a=%d\n",a);  // garbage stores coz we haven't declared any value.
+a=10;
+printf("a=%d\n",a);
+return 0;
+}
+
+Any variable that resides inside the function is called "Local Variable".---> inside stack segment
+Default value of local variable is GARBAGE. (from above program int a)
+Variables that are declared outside the main function is called "Gobal Variable".-----> inside the data segment 
+Default value of glocal variable is Zero.(from above program int b) 
+																	 ________________________
+IMP concept:	Memory representation for below code				|						|	
+																	|	Stack segement		|
+	       Compiler									 run			|			a = 10		|
+1.c----------------------------->1.executable---------------------> |_______________________|
+#include<stdio.h>					2-sections						|						|
+int b;								Data section	b				|	Heap segement		|
+int main()							Text section	0				|_______________________|
+{																	|						|
+int a;																|						|	
+printf("a=%d\n",a);  												|	Data segement		|
+a=10;																|_______________________|	
+printf("a=%d\n",a);													|						|
+return 0;															|	Text segement		|
+}																	|						|
+																	|_______________________|
+<---------------------HDD------------------------------------------>|<----------RAM-------->
+
+Variable can be defined using 2-properties:
+			1. Data type ----> defines size-of memory for variable.
+			2. Storage class--> Defines 	
+									Default value
+									Memory
+									Scope ( Accessibility)
+									Life time
+Storage classes: 4types; all are keywords.
+		1. auto
+		2. register
+		3. static
+		4. extern 
+
+Example:
+#include<stdio.h>
+int main()
+{
+int a;		// Default storage class of a local variable is auto (auto int a;)
+printf("a=%d\n",a);   // Garbage value
+a=10;
+printf("a=%d\n",a);	  // 10
+return 0;
+}
+
+local variable: auto
+default value; garbage
+memory: stack
+scope: block
+life time: function life time.
+-----------
+#include<stdio.h>
+int main()
+{
+int a=10;
+printf("a=%d\n",a);
+int a=20;
+printf("a=%d\n",a);
+printf("a=%d\n",a);
+return 0;
+}
+Output: Compilation error.
+NOTE: 2-varibales cannot have same name in same scope..
+We can have 2 or more variables with same name in different scope.
+SCOPE== ACCESSIBILTY
+
+Block of code lo matrame the particular variable ki scope unatlu if same varibale 2 different scopes lo unte printf ki ae value aite undho adi print avtundii, ref below code clearly.
+
+Example1:
+#include<stdio.h>
+int main()
+{
+	int a=10;
+	printf(("a=%d\n",a); //10
+	{
+	int a=20;
+	printf(("a=%d\n",a); //20
+	}
+	printf(("a=%d\n",a); //10
+	return 0;
+}
+-----------
+#include,stdio.h>
+{
+	{
+		int a=10;
+	}
+	printf("a=%d\n",a); // "a" is alive, but still we cannot access.
+	return 0;
+}
+Output: Compilation error (varibale a is out of scope)
+Every function has its own stack frame(local variable's reside), it gets destroyed when the function ends.
+--ntg but oka manishini oka urlo/place undi and manam verey place lo undi piliste, that person cant respond coz he is not near to them(vinipistene palukutaru) here vinipinchatam is scope.--> scope lo leru.
+Life-Time: when memory allocated , when destroyed.
+When the stack frame gets destroyed, the memory also gets destroyed. (which means aa function lo unna anni instructions execute aiyi return 0; vachake stack frame destroy avtadi). 
+
+Example2:
+int main()
+{
+	{
+	int a=10;
+	printf("a=%d\n",a); //a=10
+	}
+	{
+	int a=20;
+	printf("a=%d\n",a); //a=20
+	}
+	{
+	int a=30;
+	printf("a=%d\n",a); //a=30
+	}
+	return 0;
+}
+--------
+Example3:
+int main()
+{
+	int a=10;
+	{
+	int a=20;
+	printf("a=%d\n",a); //20 
+		{
+		int a=30;
+		printf("a=%d\n",a); //30
+		}
+	printf("a=%d\n",a); //20
+	}
+	return 0;
+}
+Explanation:
+Check the number of variables, and their scope.
+---------
+int main()
+{
+	int a=10;
+	{
+	printf("a=%d\n",a);  //10
+		{
+		int a=30;
+		printf("a=%d\n",a); //30
+		}
+	printf("a=%d\n",a);  //10
+	}
+	return 0;
+}
+
+-----
+int main()
+[
+int a=10;
+{
+printf("a=%d\n",a);
+}
+return 0;
+}
+Output: a=10.
+printf will not have any scope, it just tries to access the variable.
+----------
+int main()
+{{
+	int a=10;
+	{
+	int a=20;
+	printf("a=%d\n",a); //20
+	{
+	int a=30;
+	printf("a=%d\n",a); //30
+	}
+	printf("a=%d\n",a); //20
+	}
+	}
+	printf("a=%d\n",a); // cant access the variable.
+	return 0;
+}
+Output: Compilation error.
+--------------------------------------------
+The scope of global variable is throughtout the program.
+Example: Global variable
+int a=20,b=30; //global vaiable
+int main()
+{
+	{
+	int a=50,b=40; //local variable
+	}
+	printf("a=%d\tb=%d\n",a,b); //a=20 b=30.
+	return 0;
+}
+------------
+int a=20,b=30; // 
+int main()
+{
+	int a=50,b=40; 
+	printf("a=%d\tb=%d\n",a,b); //a=50,b=40. Scope of the variable changed.
+	return 0;
+}
+---------------
+//int a=20,b=30; 
+int main()
+{
+	{
+	int a=50,b=40; 
+	}
+	printf("a=%d\tb=%d\n",a,b); //Compilation error, out of scope.
+	return 0;
+}
+----------
+int main()
+{
+	int a=50; 
+	{
+	printf("a=%d\n",a); //a=50 printf doesnt have scope.
+	}
+	return 0;
+}
+-----------
+int main()
+{
+	int a=50; 
+	{
+	int a=20;
+	printf("a=%d\n",a); //a=20 
+	}
+	return 0;
+}
+----------------
+int main()
+{
+	int a=50; 
+	{
+	int a=20;
+	{
+	int a=30;
+	printf("a=%d\n",a); //a=30 
+	}
+	return 0;
+}
+}
+-----------------
+int main()
+{
+	int a=50; 
+	{
+	int a=20;
+	{
+	int a=30;
+	{
+	//int a=40;
+	printf("a=%d\n",a); //a=30 
+	}
+	printf("a=%d\n",a); //a=30
+	}
+	}
+	return 0;
+}
+------------------
+int main()
+{
+	int a=50; 
+	{
+	int a=20;
+	{
+	int a=30;
+	{
+	int a=40;
+	printf("a=%d\n",a); //a=40 
+	}
+	printf("a=%d\n",a); //a=30
+	}
+	}
+	printf("a=%d\n",a); //a=50
+	return 0;
+}
+---------------------
+int main()
+{
+{
+int a=50;
+{
+int a=20;
+{
+int a=30;
+{
+int a=40;
+printf("a=%d\t",a); //a=40
+}
+printf("a=%d\t",a); //a=30
+}
+}
+}
+printf("a=%d\t",a); //compialtion error, out of scope.
+return 0;
+}
+----------------------------------
+int a=60;
+int main()
+{
+int a=50;
+{
+int a=20;
+{
+int a=30;
+{
+int a=40;
+printf("a=%d\t",a); //a=40
+}
+printf("a=%d\t",a); //a=30
+}
+}
+}
+printf("a=%d\t",a); //a=60
+return 0;
+}
+--------------------------------------
+int a=60;
+int main()
+{
+int a=70;
+{
+	int a=50;
+{
+int a=20;
+{
+int a=30;
+{
+int a=40;
+printf("a=%d\t",a); //a=40
+}
+printf("a=%d\t",a); //a=30
+}
+}
+}
+printf("a=%d\t",a); //a=70
+return 0;
+}
+-----------------------
+#include<stdio.h>
+int a=60;
+int main()
+{
+	{
+		int a=50;
+		{
+			printf("a=%d\n",a);  //50
+			int a=40;
+			{
+				int a=30;
+			}
+			printf("a=%d\n",a);   //40
+		}
+	}
+	printf("%d\n",a);  //60
+	return 0;
+}
+########################################################################################################3
+Day10: Storage classes, Functions
+
+static storage class:
+	Default value: 0
+	Memory : Data segment(All global and static variables stored inside the data-segment.
+	Scope: block
+	Life-time: program life time.
+Usage example:
+#include<stdio.h>
+int main()
+{
+	<functionality>
+
+	<functionality>
+
+	<functionality>
+
+	<functionality>
+
+return 0;
+}
+Sometimes, same functionality might be repeated/used for more than once in a program.-----> To reduce writing multiple times the same code we use FUNCTIONS.
+Syntax of function:
+return_type function_name(function_arguments)
+{
+	
+	
+	
+}
+When function is called, it executes the function and comes back.
+Q) What is function?
+A) Is a block of code/instructions to achieve the functionality.
+To reduce the redundancy or duplication of code.
+
+Functions: It consists of
+	function declaration
+	function call
+	function definition
+syntax:
+return_type function_name(function_arguments)
+
+4types;
+1. Functions without arguments and without return type.
+2. Functions with arguments and without return type.
+3. Functions without arguments and with return type.
+4. Functions with arguments and with return type.
+
+Program: WPA to calculate the sum of 2 numbers.
+Type: Funtion with arguments and without return type.
+#include<stdio.h>
+void add(int,int); ----------------------> Function declaration ( the same data type has to be used in function declaration and function defition.
+int main()
+{
+	int num1,num2;
+	printf("Enter num1 and num2:");
+	scanf("%d%d",&num1,num2);
+	add(num1,num2); //add(20,30); ------> function call (num1,num2 are real arguments)
+	printf("hello world\n");
+	return 0;
+}
+  void add(int a,int b)---------------------> called function (a,b are formal arguments), function definition
+{
+		int sum;
+		sum=a+b;
+		printf("sum=%d\n",sum);
+		//return;
+}
+Output:
+sum=50
+hello world
+
+Explanation:
+		RAM
+_____________________________
+|							|
+|add frame in complete stack|	
+|		STACK				|
+|		a        b	  sum   |
+|		20		 30 	50	|
+|---------------------------|
+|							|
+|		main frame in stack	|
+|		num1    num2		|
+|		20		30		    |
+|							|
+|___________________________|
+|							|
+|							|
+|		HEAP				|
+|							|
+|___________________________|
+|							|
+|							|
+|			DATA			|
+|							|
+|___________________________|
+|							|
+|							|
+|			TEXT			|	
+|							|
+|___________________________|
+Default function in c-program is main function(willl be executed).
+Q) What happens when function is called:
+	1. With same prototype(duplicate) or name functions definition must exist.
+	2. A new stack frame will be created for the function definition.
+	3. Local variables are stored inside the stack.
+	4. Execution of function definition starts.
+	5. Once function definition execution is completed, the stack frame will be collapsed and returns back to the caller/call function.
+If you dont want to use function declaration, then write the function definition above the main function.
+After program execution the stack memeory gets collapsed.
+-----------------------
+Program: 
+Type: Funtion with arguments and with return type.
+#include<stdio.h>
+int add(int,int);
+int main()
+{
+	int num1,num2,sum;
+	printf("enter num1 and num2:");
+	scanf("%d%d,&num1,num2);
+	sum=add(num1,num2);   //sum=num1+num2
+	printf("Sum=%d\n",sum);
+	return 0;
+}
+ int add(int a,intb)
+{
+	int sum=a+b;
+	return sum;
+}
+
+Explanation:
+		RAM
+_____________________________
+|							|
+|add frame in complete stack|	
+|		STACK				|
+|		a        b	  sum   |
+|		30		 20 	50	|
+|---------------------------|
+|							|
+|		main frame in stack	|
+|		num1    num2 sum	|
+|		30		20		50  |
+|							|
+|___________________________|
+|							|
+|							|
+|		HEAP				|
+|							|
+|___________________________|
+|							|
+|							|
+|			DATA			|
+|							|
+|___________________________|
+|							|
+|							|
+|			TEXT			|	
+|							|
+|___________________________|
+After program execution the stack memeory gets collapsed.
+
+HomeWork:
+Type: Funtion without arguments and without return type.
+Type: Funtion without  arguments and with return type.
+-------
+Program: Function calling within the function.
+int main()
+{
+	int v=1;
+	printf("in mainv=%d\n",v);
+	f1(v+10);-------->f1(11);
+	printf("in main v=%d\n",v);
+}
+void f1(int v)
+{
+	printf("in f1 v=%d\n",v);
+	v=v*2;
+	printf("in f1 v=%d\n",v);
+	f2(v);-------->f2(22);
+	printf("in f1 v=%d\n",v);
+}
+void f2(int v)
+{
+	printf("in f2 v=%d\n",v);
+	v=0;
+	printf("in f2 v=%d\n",v);
+}
+	
+Output:
+in main v=1
+in f1 v=11
+in f1 v=22
+in f2 v=22
+in f2 v=0
+in f1 v=22
+in main v=1
+
+Explanation:
+		RAM
+_____________________________
+|							|
+|f2 frame in complete stack |	
+|		STACK				|
+|v = 22 then chnages to 0	|
+|---------------------------|
+|f1 frame in complete stack |	
+|		STACK				|
+|v = 11 then chnages to 22	|
+|---------------------------|
+|							|
+|		main frame in stack	|
+|		v				    |
+|		1					|
+|___________________________|
+|							|
+|							|
+|		HEAP				|
+|							|
+|___________________________|
+|							|
+|							|
+|			DATA			|
+|							|
+|___________________________|
+|							|
+|							|
+|			TEXT			|	
+|							|
+|___________________________|
+
+Here, the execution starts from main then f1 is called and then in f1 function the f2 is called after executing those, while going back from f2 it goes to f1 and prints output as v=22 then from f1 it goes to main where v=1 is the value.
+NOTE: In return journey first f2 memory stack gets collapsed then f1, finally main stack memory gets collapsed.
+----------------
+Homework: 
+int main()
+{
+	int v=1;
+	printf("in main v=%d\n",v);
+	f1(v+10);
+	printf("in main v=%d\n",v);
+}
+void f1(int v)
+{
+	printf("in f1 v=%d\n",v);
+	v=v*2;
+	printf("in f1 v=%d\n",v);
+	f2(v++);
+	printf("in f1 v=%d\n",v);
+}
+void f2(int v);
+{
+	printf("in f2 v=%d\n",v);
+	v=0;
+	printf("in f2 v=%d\n",v);
+}
+########################################################################################################3
+Day11: Storage classes-functions
+Program:
+#include<stdio.h>
+void fun();
+int main()
+{
+	fun();
+	fun();
+	fun();
+	fun();
+	printf("Hello world\n");
+	return 0;
+}
+void fun()
+{
+	int a=10;
+	a++;
+	printf("a=%d\n",a);
+}
+Output:
+a=11
+a=11
+a=11
+a=11
+Hello world
+
+Explanation:
+_____________________________
+|fun frame in complete stack|	
+|		STACK				|
+|		a = 11	            |
+|---------------------------|
+|							|
+|		main frame in stack	|
+|		a				    |
+|		1					|
+|___________________________|
+Here, main frame gets created, then fun() is called. enters to fun() definition a++ so a=11 and prints output as a=11. Then again the executes goes back to main funtion where fun() stack memory gets collapsed and so on...This process continues for 4times as fun() is called and prints Hello world then main stack memory also gets collpased and finally program gets termianted.
+auto variable life time is block ofs the program and scope is block.
+--------
+Program: using static keyword
+#include<stdio.h>
+void fun();
+int main()
+{
+	fun();
+	fun();
+	fun();
+	fun();
+	printf("Hello world\n");
+	return 0;
+}
+void fun()
+{
+	static int a=10;
+	a++;
+	printf("a=%d\n",a);
+}
+Output:
+a=11
+a=12
+a=13
+a=14
+Hello world
+
+Explanation:
+All global and static variables are executed only once at compile-time.(coz data segment is present in executable only).
+static and global variables are stored in data segement.
+static variable life time is throughout the program and scope is block.
+Program that runs in the RAM is called PROCESS.
+
+___________exe_______________				______RAM_______________
+|							|				|						|
+|							|				|			fun			|
+|		DATA Segment		|				|______________________	|
+|		a					|				|						|
+|		10					|				|			main		|
+|__________________________ |-------------->|_______________________|
+|							|				|						|
+|							|				|_______________________|
+|			Text segment	|				|	a= 11,12,13,14		| DATA segment
+|							|				|______________________	|
+|							|				|						|
+|___________________________|				|______________________	|
+---------------------
+Program: using auto and static keyword
+#include<stdio.h>
+void fun();
+int main()
+{
+	fun();
+	fun();
+	fun();
+	fun();
+	printf("Hello world\n");
+	return 0;
+}
+void fun()
+{
+	int a=10;
+	static int b=10;
+	//static int b=a; // compilation error
+	a++;
+	b++;
+	printf("a=%d,b=%d\n",a,b);
+}
+Output:
+a=11,b=11
+a=11,b=12
+a=11,b=13
+a=11,b=14
+Hello world
+NOTE:static variable ni function nunchi call cheste we get error.
+---------------------
+Program: To print address of a variable.
+#include<stdio.h>
+int main()
+{
+	short int a=257;
+	printf("a=%hd\n",a);  //a=257
+	printf("address of a=%u\n",&a); //Unary operator--> Decimal output
+	printf("address of a=%x\n",&a); //Unary operator---> Hexa decimal
+	printf("address of a=%p\n",&a); //Unary operator---> Hexa decimal
+	return 0;
+}
+Explanation:
+________________a___________________
+|				 |					|
+|0000 0001		 |	0000 0001		|
+|________________|__________________|
+				101					100
+
+Key points:
+The start byte address is address of the variable.
+Address of a variable it always positive.
+&----> if op1&op2 then it considers as bitwise AND operator coz 2operands are used.
+	   if &op1 then it considers a address of operand1.
+Address of a variable can be stored in other variable called POINTER.
+Pointer is also a variable which stores address of variable.
+Synatx: datatype variable_name;  //int a;----> normal variable------------> int a=10; or 
+																			int a; a=10;
+		datatype *variable_name; //int *a;----> pointer variable(to know compiler we have mentioned * for variable----------> int *a=&b; or 
+																															   int *a; a=&b;
+&------> address
+*------> pointer
+say int *p=&a
+
+Example:																									#include<stdio.h>
+int main()
+{
+	short int a=257;
+	printf("a=%hd\n",a);  //a=257
+	printf("address of a=%u\n",&a); //100 Unary operator--> Decimal output
+	int *p;
+	p=&a; // value of p is 100 ntg but address of a.
+	printf("p=%u,&p=%u\n",p,&p); //100,200
+	printf("%d\n",*p);   // *p==*100==257
+	return 0;
+}																									Any variable can be accessed using 2ways, 1. Directly using variabkle name 2.Uisng address of a variable(Pointers)----> Indirect way.					   
+Exaplantion:
+________________a___________________
+|				 |					|\       ____p_____
+|0000 0001		 |	0000 0001		| \      |		   |
+|________________|__________________|   \    |	100	   |
+				101					100  --->|_________|
+												200--> address
+indirect access operator of a variable.
+&-----> addressof or reference.
+* ----> Deference/ value of that address.
+Explanation:
+*p==*100==257
+  ==*&a 
+  where * is deference operator
+		& is reference operator.
+---------------------------------------------
+Program: Pointers.
+int main()
+{
+	short int a=257;
+	int *p=&a; // 
+	*p=50;
+	printf("a=%d,*p=%d\n",a,*p); //a=50,*p=50
+	*p=25;
+	printf("a=%d,*p=%d\n",a,*p); //a=25,*p=25
+	a=70;
+	printf("a=%d,*p=%d\n",a,*p); //a=70,*p=70
+	return 0;
+}
+Explantion:
+____p_____		  _____a_____
+|		  |		  |  257	|
+|	100	  |------>|	50,25,70|
+|_________|		  |_________|
+200					100
+*p=*&a
+  = a
+ *p is nothing but a, if we change *p i.e; we're trying to chnage "a" value only.
+ For faster( hardware ni direct ga access chestunam so fast).---> pointers
+ The size of pointer is fixed, depends on system architecture.
+	Suppose, CPU architecture is --> 64 bits then pointer size is 8bytes.
+									 32 bits then 4bytes.
+									 16 bits then 2bytes.
+ -------------------
+ Program:
+ int main()
+ {
+	 int a=257;
+	 int *p=&a;
+	 int **q=&p; // Here, ** indicates double pointer assigned to variable "q" 
+	 int ***r=&q;
+	 printf("a=%d,&a=%u\n",a,&a);  //a=10,&a=100
+	 printf("p=%u,&p=%u,*p=%u\n",p,&p,*p);  //100,200,10-----------> *p, *&a, a.
+	 printf("q=%u,&q=%u,*q=%u,**q=%u\n",q,&q,*q,**q);  //200,300,100,10-----------> *q=*&p=p, **q==**&p ==*p==*&a==a.
+	 printf("r=%u,&r=%u,*r=%u,**r=%u,***r=%u\n",r,&r,*r,**r,***r);  //300,400,200,100,10-----------> *r=*&q=q
+									  **r==**&q==*q==*&p=p
+									  ***r == ***&q == **q == **&p == *p == *&a == a
+Explantion:
+____r_____		  _____q_____		 ____p____	     ____a____
+|		  |		  |     	|		 |		 |		 |		 |
+|	300	  |------>|	   200  |------->|	100	 |------>|	10	 |
+|_________|		  |_________|		 |_______|		 |_______|
+400					300				 200			 100
+########################################################################################################3
+Day12: Pointers cont..
+int main()
+{
+	int a=10;
+	printf("a=%d\n",a); //a=10
+	void b=20;
+	printf("b=%d\n",b); // void cant allocate memory for "b", so compiler throws compilation error.
+	return 0;
+}
+Output: Compilation error.
+---------
+int main()
+{
+	int a=10;
+	printf("a=%d\n",a); //a=10
+	void *p=&a;  // size of pointer must be already known to compiler. How and why?
+	
+	return 0;
+}
+Explanation:
+void variable is a compilation error.
+void pointer variable declartion is not an error.
+size of pointer must be already known to compiler. How and why?
+size of pointer variable is fixed, depends on the CPU architecture.(OS)--> 32 or 64bit OS.
+													64 bits = 8bytes --> 1byte=8bits, so size of pointer will be 8-bytes.
+In cmd, try systeminfo
+
+Using program, we can find the size of variable using the operator called "sizeof()".--> Unary Operator.
+Example:
+int main()
+{
+	char c;
+	short int a;
+	int b;
+	long int i;
+	printf("%u,%u,%u,%u\n",sizeof(c);
+	sizeof(a),sizeof(b),sizeof(i);
+}
+Output:8,8,8 (based on OS bits, the size prints).
+
+Q) Pointer size depends on OS, then what is the need of data type before the pointer variable?
+A) Declaroing a void pointer is not an error but when we perform operations like increment,decrement, de-reference then we get an error.
+Enni bytes fetch avali ani cheepdi data type i.e; infront of variable or pointer.
+Example:
+int main()
+{
+	int a=10;
+	printf("a=%d\n",a);
+	void *p=&a;
+	printf("%d\n",*p);
+	return 0;
+}
+Output: Compilation error
+----------------
+int main()
+{
+	int a=513;
+	int *p=&a;
+	printf("%d,%d\n",a,*p); //a=513,*p=513. (*p aa address ki velli andhlo una value ni access chestadi) "a" base address is 100
+	char *q=&a;
+	printf("%d,%d\n",a,*q); //a=513,*q=1 ( char data type use chesam so 1byte).
+	return 0;
+}
+Explanation:							a
+____________________________________________________________________________________
+|					|					|						|					|	
+|0000 0000			| 0000 0000			|	0000 0010			|	0000 0001		|
+|					|					|						|					|	
+|___________________|___________________|_______________________|___________________|
+				103					102						101					100	
+										p=100							q=100
+										*p=*100==513					*q=*100==1
+------------
+int main()
+{
+	int a=253;
+	int b=10;
+	int *p=&a;
+	printf("%d\n",a+1); //254---> 253+1(int addition)
+	printf("%d\n",b+1); //11---> 10+1
+	printf("%u\n",p+1); //104---> Pointer arthimetic
+	
+Explanation:
+pointer arthimetic
+p+1 = 100+1
+	= 100+1*sizeof(int)
+	= 100+1*4
+	= 104
+________________________________________a____________________________________________	
+|					|					|						|					|	_____b______
+|0000 0000			| 0000 0000			|	0000 0010			|	0000 0001		|	|          |
+|					|					|						|					|	|	10	   |	
+|___________________|___________________|_______________________|___________________|	|__________|
+				103					102						101					100		200
+------
+int a=253;
+char *p=&a;
+printf("%d",*p); //1 -------->  char gives/fetches only 1byte of data
+short int *q=&a; 
+printf("%d",*q); //253 ------> short int gives only 2bytes of data
+printf("%d",*(p+1)); //2---------> i.e; *(p+1)=*(101)=2 --------> fetches 2nd byte of data
+-------------------
+Program:Function call by value.
+#include<stdio.h>
+void fun(int a,int b)
+{
+	a=30;
+	b=5;
+	printf("in function a=%d,b=%d\n",a,b); //a=30,b=5
+}
+int main()
+{
+	int a=10,b=20;
+	printf("Before function call a=%d,b=%d\n",a,b); //a=10,b=20
+		fun(a,b); // function call by value.
+	printf("After function call a=%d,b=%d\n",a,b); //a=10,b=20
+}
+Output:
+Before function call a=10,b=20
+in function a=30,b=5
+After function call a=10,b=20
+// Draw memory diagram and explain.
+--------------
+Program:Function call by address.
+#include <stdio.h>
+void fun(int *p,int *q)
+{
+	*p=25;
+	*q=10;
+}
+int main()
+{
+	int a=10,b=20;
+	printf("a=%d,b=%d\n",a,b); //a=10,b=20
+	fun(&a,&b);  // function call by address.
+	printf("a=%d,b=%d\n",a,b); //a=25,b=10
+	return 0;
+}
+Advantage------>Pointers can point from one segment to another segment.(say data to stack segement).
+-----------------
+Program: Call by value and Call by address.
+#include <stdio.h>
+void fun(int a,int *p)
+{
+	a=100;
+	*p=200;
+}
+int main()
+{
+	int a=10,b=20;
+	printf("Before function call a=%d,b=%d\n",a,b); //a=10,b=20
+	fun(a,&b); // function call by value.
+	printf("After function call a=%d,b=%d\n",a,b); //a=10,b=200
+}
+########################################################################################################3
+Day13: Loops
+Program:
+#include<stdio.h>
+int main()
+{
+	printf("Hello world"); //Hello world
+	return 0;
+}
+-----
+Loops: Executing set of instructions n-number of times.
+1) while loop:
+syntax:
+while(condition)
+{
+	
+}
+--
+int main()
+{
+	int i=1;     // Loop variable initialization
+	while(i<=100){  // Loop comdition
+		printf("%d",i); // increment/ decrement
+	i++;
+	}
+}
+--The loop repeats until the condition becomes false, it is go-on true then it is infinite loop and leads to run-time error.(same as if condition, only diff is loop goes on repeats til the condition gets false and if condition executes only once it if the condition is true.)
+Example:
+int main()
+{
+	if(1)
+	{
+		printf("Hello world\n"); //Hello world
+	}
+	printf("Bye world\n"); //Bye world
+	return 0;
+}
+----		
+________Compilation_____________________			_run-time errors_
+|									   |			  |	     |
+|	1.c-------> Compiler ------> .exe  |------------->|	RAM  |
+|______________________________________|			  |______|
+
+int main()
+{
+	while(1)
+	{
+		printf("Hello world\n"); //Hello world
+	}
+	printf("Bye world\n"); 
+	return 0;
+}
+Explanation: Since while condition is true, Hello world outputs prints untill the stack memeory gets filled and gets corrupted.-------> Run time error. or infinite loop.
+---------------
+Program:
+#include<stdio.h>
+int main()
+{
+	int i=1;
+	while(i<10){
+		printf("Hello world\n");
+		i++;
+	}
+	return 0;
+}
+Explanation:
+Our requirement is to print for 10 times but it goes till 9 times, so use while(i<11) or while(i<==10), then it prints for 10 times.
+It iterates till i=9
+loop1: 1<10---> hello world ----i++  so i=2.
+loop2: 2<10---> hello world ----i++  so i=3.
+loop3: 3<10---> hello world ----i++  so i=4.
+loop4: 4<10---> hello world ----i++  so i=5.
+loop5: 5<10---> hello world ----i++  so i=6.
+loop6: 6<10---> hello world ----i++  so i=7.
+loop7: 7<10---> hello world ----i++  so i=8.
+loop8: 8<10---> hello world ----i++  so i=9.
+loop9: 9<10---> hello world ----i++  so i=10.
+loop10:10<10---> condition failed.
+-----------------
+or 
+int i=10;
+while(i>0)
+{
+	printf("Hello");
+	i--;
+}
+--------------
+2) for loop:
+ syntax:
+ for (initialization;condition;increment/decrement)
+ {			1			2				4				
+	3 
+ }
+ Step1: Variable initialization.
+ Step2: Checks condition.
+ Step3: Enters into the body.
+ Step4: Variable increment/decrement.
+ -------------
+ Example:
+ int main()
+ {
+	 int i;
+	 for(i=1;i<=100;i++)
+	 {
+		 printf("%d\n",i);
+	 }
+	 return 0;
+ }
+ or 
+  int main()
+ {
+	 int i=1;
+	 for(;i<=100;i++)
+	 {
+		 printf("%d\n",i);
+	 }
+	 return 0;
+ }
+ or
+  int main()
+ {
+	 int i=1;
+	 for(;i<=100;)
+	 {
+		 printf("%d\n",i);
+		 i++;
+	 }
+	 return 0;
+ }
+ or
+   int main()
+ {
+	 int i=1;
+	 for(;i<=100;i++)
+	 {
+		 printf("%d\n",i); // prints odd numbers in first 100numbers
+		 i++;
+	 }
+	 return 0;
+ }
+ or 
+    int main()
+ {
+	 int i=2;
+	 for(;i<=100;i++)
+	 {
+		 printf("%d\n",i); // prints even numbers in first 100numbers
+		 i++;
+	 }
+	 return 0;
+ }
+ or
+     int main()
+ {
+	 int i=1;
+	 for(;i<=100;i=i+2)
+	 {
+		 printf("%d\n",i); // prints even numbers in first 100numbers
+		 //i=i+2;
+	 }
+	 return 0;
+ }
+ -----------------------
+ switch control statement.
+ syntax:
+ switch(int)
+ {
+	 case int:
+	 
+	 case int:
+	 
+	 ...........
+ }
+ 
+ Program: Vowels and Consonants.
+ #include<stdio.h>
+ int main()
+ {
+	 char ch;
+	 scanf("%c",&ch);
+	 switch(ch)
+	 {
+		 case 'A':
+			printf("Given char %c is vowel\n",ch);
+			break;  // used to come out of switch case.
+		 case 'E':
+			printf("Given char %c is vowel\n",ch);
+			break;
+		 case 'I':
+			printf("Given char %c is vowel\n",ch);
+			break;
+		 default:
+			printf("Entered wrong choice:");
+	 }
+ }
+ 
+NOTE: Switch always accepts an integer. and the value we pass to case has to be integer only.
+ch= A, it prints the respective output and goes to next case and executes. So here we need to take care of printing only the user requirement for this we use break keyword.
+Break statment is used only in switch and loops, in rest all concepts if we use break, gives error.
+########################################################################################################3
+Day14: Programs
+Program: WPA to find whether the given number is prime or not
+Method1: given number is "n", so count also increments n times.
+#include <stdio.h>
+int main()
+{
+	int num,i,count=0;
+	printf("enter num:");
+	scanf("%d",&num);
+	for(i=1;i<=num;i++)
+	{
+		if(num%i==0)
+			count++;
+	}
+	if(count== 2)
+		printf("Given number %d is prime\n",num);
+	else
+		printf("Given number %d is not prime\n",num);
+return 0;
+}	
+
+Explanation:
+Prime number: Any number divisble by only 1 and itself.
+Example:
+Factors for below;
+10 -----> 1*10, 2*5
+24 -----> 1*24, 2*12, 3*8
+7 ------> 1*7
+
+Given number 'n'
+1 to n----------> for(1ton)
+num%1==0
+num%2==0
+num%3==0
+.
+.
+.
+.
+num%n==0
+
+Explanation:
+Iteration1: 1<=7 ------> if(7%1 == 0) ------->0==0 -----> TRUE
+Iteration2: 2<=7 ------> if(7%2 == 0) ------->1==0 -----> FALSE
+Iteration3: 3<=7 ------> if(7%3 == 0) ------->1==0 -----> FALSE
+Iteration4: 4<=7 ------> if(7%4 == 0) ------->3==0 -----> FALSE
+Iteration5: 5<=7 ------> if(7%5 == 0) ------->2==0 -----> FALSE
+Iteration6: 6<=7 ------> if(7%6 == 0) ------->1==0 -----> FALSE
+Iteration7: 7<=7 ------> if(7%7 == 0) ------->0==0 -----> TRUE
+Iteration8: 8<=7 ------> if(7%8 == 0) ------->Division cant be perfomed-----> Condition fails and loop terminates.
+Q) count==2 why?
+A) for prime TRIE 2times matrmae avtadi for any input number, so count==2.
+--------------
+Method2: given number is "n", so count also increments n-2 times.
+for (i=2;i<num-1;i++)
+{
+	if(num%i==0)
+		count++;
+}
+if(count == 0)
+----------------------
+Method3: Better method
+1 to n -----> n times
+2 to n-1 ---> n-2 times
+
+num ---> num/2 // In mathematics, for any given number to get remainder as zero, the max factor is number/2 only.
+Example:
+12----> max factors 6
+10----> max factors 5
+24----> max factors 12
+50----> max factors 25
+
+2 to num/2
+Program: Reduces CPU time to half.
+int main()
+{
+	int num,i,count=0;
+	scanf("%d",&num);
+	for(i=2;i<=num/2;i++)
+	{
+		if(num%i==0)
+			count++;
+	}
+	if(count==0)
+		printf("prime number");
+	else
+		printf("not prime number");
+return 0;
+}
+Key Points:
+Given number is 100, then loop runs for 50 times.
+Given number is n, then loop runs for n/2 times.
+--------
+Method4:Suggestable
+int main()
+{
+	int num,i;
+	scanf("%d",&num);
+	for(i=2;i<=num/2;i++)
+	{
+		if(num%i==0)
+			break;
+	}
+	if(i>num/2)
+		printf("Prime number\n");
+	else
+		printf("Not prime number");
+}
+Explanation:
+num =11, i= 2to5 ( 11/2 is 5 so ges till 5 and i=2 so 2to5)
+i=2--------> 2<=5---> if(11%2==0)------>if(1)------> True---->
+i=3--------> 3<=5---> if(11%2==0)------>if(2)------> True---->
+i=4--------> 4<=5---> if(11%2==0)------>if(3)------> True
+i=5--------> 5<=5---> if(11%2==0)------>if(1)------> True
+i=6--------> 6<=5---> if(11%2==0)------>if(0)------> False
+-------------------------------------------------------------------------------
+Program: WPA to input an integer and print the sum of indivdual digits of a number.---> useful to solve 5diff logics.
+
+int main()
+{
+	int num,rem,sum=0;
+	printf("Enter num:")
+	scanf("%d",%num);
+	while(num)
+	{
+		rem = num%10;
+		sum = sum + rem;
+		num = num/10;
+	}
+printf("Sum=%d\n",sum);
+return 0;
+}	
+
+Explanation:
+1st loop: 0+3=3
+2nd loop: 3+5=5
+3rd loop: 5+1=6
+----
+Say,
+123 ==1+2+3 == 6
+12 == 1+2 ==3
+1234== 1+2+3+4 ==10
+Now,
+123%10=3 --------> 123/10 =12
+12%10=2 --------> 12/10 =1
+1%10=1----------> 1/10=0
+KeyPoints:
+for sum of digits of given number------> 0+some=some
+for multiplication of digits of given number------> 1*some=some
+---------------
+sum=sum +(rem*rem);  //Sum of squares of given number
+sum = sum + (rem*rem*rem);  //Sum of cubes of given number
+########################################################################################################3
+Day15: Arrays
+Array: Array is a derived data type (user defined) to store homogeneous/similar elements in contigeous memory locations.
+Syntax of an array:
+int variable_name;
+int variable_name[size];
+//array size declaration ki []
+//array size initialization ki{}
+
+Q) How to access individual array elements?
+A) Using array indexes.
+
+Program: WPA to input 5-different integers and print the highest number.(using arrays)
+#include<stdio.h>
+int main()
+{
+	int arr[5];
+	int i;
+	for(i=0;i<5;i++)
+	{
+		printf("Enter a[%d] element:");
+		scanf("%d",&a[i]);
+	}
+	
+	
+	
+	
+Explanation:
+Memory allocation of int num1 =10,num2= 20,num3=15,num4=20,num5=10;
+num1=10;
+num2=20;
+num3=15;
+num4=20;
+num5=10;
+
+printf("Enter 5integers:");
+scanf("%d%d%d%d%d",&num1,&num2,&num3,&num4,&num5);
+
+____num1_	_____num2__		____num3__		____num4__       __num5__
+|		|   |		  |		|		 |		|		 |		|		 |
+| 10	|   |	20	  |		|	15	 |		|	20	 |		|	10	 |	
+|_______|	|_________|		|________|		|________|		|________|
+
+----------
+
+Array memory allocation of int arr[5];
+	____0_________1___________2___________3________4______
+	|		 |			|			|		  |			 |
+	|	10	 |			|	15		|		  |			 |
+	|		 |		20	|			|	20	  |		10	 |
+	|________|__________|___________|_________|__________|
+	100		  104		 108		112		 116
+
+//Array initialization
+int arr[5] ={10,20,15,20,10};
+arr[0]=10;
+arr[1]=20;
+arr[2]=15;
+arr[3]=20;
+arr[4]=10;
+
+/*using program, we can use loops;
+			int i;
+			for(i=0;i<5;i++)
+				a[i] = i+1;*/
+			
+printf("Enter 5integer array elements:");
+scanf("%d%d%d%d%d",&arr[0],&arr[1],&arr[2],&arr[3],&arr[4]);
+int i;
+for(i=0;i<5;i++)
+{
+	printf("Enter a[%d] element:",i);
+	scanf("%d",&a[i]);
+}
+-------------------------
+Program2:
+int main()
+{
+	int i;
+	for (i=0;i<5;i++)
+	{
+		printf("Enter a[%d] element:",i);
+		scanf("%d",&a[i]);
+	}
+	arr[0]=23;
+	printf("%d\n",arr[2]); //30
+	for(i=0;i<5;i++)
+		printf("a[%d]=%d\n",i,a[i]); //printf("%d\n",a[i]);
+	a[4]=-25;
+	.
+	.
+}
+Explanation:
+	____0_________1___________2___________3________4______
+	|		 |			|			|		  |			 |
+	|	20	 |	-15		|	30		|	45	  |		10	 |
+arr	|	23	 |			|			|		  |		-25	 |
+	|________|__________|___________|_________|__________|
+	100		  104		 108		112		 116
+Only difference for array and traditional way is; in arrays we use the same variable name access using index number and in traditional way we use different variable name.
+--------
+IMP: Array name is a "constant pointer"(which we cant change the base address of array---> thumb rule) which stores the base address of an array.
+Example1:
+arr[i] == *(arr+1)
+arr[1] = *(arr+1)
+	   = *(100+1)
+	   = *(100+1*sizeof(int))
+	   = *(104)
+	   = -15
+---
+Example2: 
+arr[0] = *(arr+0)
+	   = *(100+0)
+	   = *(100+0*sizeof(int))
+	   = *(100)
+	   = 23
+
+
+	____0_________1___________2___________3________4______		____a___---> pointer variable.
+	|		 |			|			|		  |			 |		|		 |
+	|	20	 |	-15		|	30		|	45	  |		10	 |		|	100	 |
+arr	|	23	 |			|			|		  |		-25	 |		|		 |
+	|________|__________|___________|_________|__________|		|________|
+	100		  104		 108		112		 116
+array base address is 100 from above.
+---
+Program: Pseudo code:
+int main()
+{
+	int a[5]={23,-15,30,45,-25};
+	a++;  //a=a+1; --->a=100---> a+1 is 104
+	printf("%d\n",a[0]);
+}
+Output: compilation error
+
+	____0_________1___________2___________3________4______		____a___---> pointer variable.
+	|		 |			|			|		  |			 |		|		 |
+	|	20	 |	-15		|	30		|	45	  |		10	 |		|	100	 |
+arr	|	23	 |			|			|		  |		-25	 |		|	104	 |
+	|________|__________|___________|_________|__________|		|________|
+	100		  104		 108		112		 116
+Explanation:
+a++;  //a=a+1; --->a=100---> a+1 is 104
+Actually, a[0] = *(a+0)
+			   = *(104+0)
+			   = *104
+			   = -15 ( but ans is compilation error) // shouldnt change the array abse address. Here the base address is changed but not the value.
+Q) Why array name is constant pointer?
+A) shouldnt change the array abse address. in above example2 the base address is changed but not the value.
+Q) why array index must start with zero?
+A) Anything plus zero will be the anything, it will not chnage the value, so array index starts with zero.
+	if array starts with index 1 then the first element will miss.
+   if array starts with index 2 then the first 2 elements will miss.
+   Similarly, if array starts with nth element then the first n elements will miss.( ref below explanation).
+
+printf("%d\n",a[1]); //23
+
+Explanation:
+a[1]=*{a+1)
+	=*(100+1)
+	=*(104)
+	= -15
+	____1_________2___________3___________4________5______		____a___---> pointer variable.
+	|		 |			|			|		  |			 |		|		 |
+	|	20	 |	-15		|	30		|	45	  |		10	 |		|	100	 |
+arr	|	23	 |			|			|		  |		-25	 |		|		 |
+	|________|__________|___________|_________|__________|		|________|
+	100		  104		 108		112		 116
+########################################################################################################3
+Day16: integer arrays
+Example: Max value of a given array.
+#include<stdio.h>
+int main()
+{
+	int arr[5];
+	int i;
+	for(i=0;i<5;i++)
+	{
+	printf("Enter a[%d]element:");
+	scanf("%d",&a[i]);
+	}
+	int max = a[0];
+	for(i=1;i<5;i++)
+	{
+		if(a[i]>max) // max=20
+			max = a[i];
+	}
+	printf("Max element = %d\n",max);
+}
+
+Example: Min value of a given array.
+ int min = a[0];
+ for(i=1;i<5;i++)
+ {
+	 if(a[i]<min)
+		 min = a[i];
+ }
+ -----
+ printf("%u\n",sizeof(a[0]); //4
+  printf("%u\n",sizeof(a); //20-------> 4*5 i.e; int* 5arrays
+  int elements =sizeof(a)/sizeof(a[0]);
+  printf("elements=%d\n",elements); //5
+ 
+ int *p;
+ char *q;
+ printf("%lu\n",sizeof(p)); // depends on OS --> pointer variable
+ printf("%lu\n",sizeof(q)); // depends on OS --> pointer variable
+
+Explanation:
+	____0________i=_1___________2___________3________4____		____a___---> pointer variable.
+	|		 |			|			|		  |			 |		|		 |
+	|	20	 |	-15		|	30		|	45	  |		10	 |		|	100	 |
+arr	|		 |			|			|		  |			 |		|		 |
+	|________|__________|___________|_________|__________|		|________|
+	100		  104		 108		112		 116
+	
+	___max_____
+	|20,30,45 |
+	|_________|
+---------
+Program:
+int main()
+{
+	int a[5]={20,-15,30,45,10};
+	int *p=a;
+	int i;
+	for(i=0;i<5;i++)
+		printf("%d\n",a[i]); //
+	for(i=0;i<5;i++)
+		printf("%d\n",p[i]);
+	p[2]=18;
+	printf("%d\n",a[2]); //18
+	a[2]=20;
+	printf("%d\n",p[2]); //20
+	return 0;
+}
+	
+Explanation:
+	____0________i=_1___________2___________3________4____		 ___a_____points to base address
+	|		 |			|			|		  |			 |		|         |
+	|	20	 |	-15		|	30		|	45	  |		10	 |		|	100   |
+arr	|		 |			|			|		  |			 |		|		  |		 
+	|________|__________|___________|_________|__________|		|_________|
+	100		  104		 108		112		 116				
+																 ____p_____
+																|         |
+																|	100	  |
+																|_________|
+			a[0]=*(a+0)
+				=*(100)
+	p[0]=*(p+0)
+		=*(100+0)
+		=*100
+--------------------------------
+IMP:
+#include<stdio.h>
+void fun(int*,int);
+int main()
+{
+	int a[5]={10,-15,30,35,5},i;
+	int size = sizeof(a)/sizeof(a[0]);
+	for(i=0;i<size;i++)
+		printf("%d\n",a[i]);
+	fun(a,size);
+	for(i=0;i<size;i++)
+		printf("%d\n",a[i]);
+}
+void fun(int *p,int size)
+{
+	p[2]=12;
+	p[4]=-20;
+}
+
+Explantion:
+NOTE:In arrays, ther is not concept of call by value, we can only call by address in arrays.
+int a[10]={1,2,3,4,5}; // remaining values will append 0's for rest of array index values.
+
+memory diagram:
+________________________________________________________________________________
+|fun frame in complete stack													|
+|	p           size	    													|
+|	100           5	        													|
+|-------------------------------------------------------------------------------|
+|main frame in stack															|
+|																				|
+|	____0_________1___________2___________3________4____		 ___size___		|
+|	|		 |			|			|		  |			 |		|         |		|
+|	|	10	 |	-15		|	20		|	35	  |		5	 |		|	5     |		|	
+|arr|		 |			|	15		|		  |		-20	 |		|		  |		| 	____a____
+|	|________|__________|___________|_________|__________|		|_________|		|	|		|
+|    100	104          108          112       116								|	|	100	|			
+|_______________________________________________________________________________|	|_______|
+---------------------------------------------------------------------------------------------------------
+Program: int arrays Imp code.
+#include<stdio.h>
+void fun(int *p,int size)
+{
+	int i;
+	for(i=0;i<size;i++)
+		printf("%d",p[i]);
+	printf("\n");
+	a[5]=a[6]=a[7]=20; ---------> here a is used instead of p // should use p[5]=p[6]=p[7]=20;
+}
+int main()
+{
+	int a[10]={1,2,3,4,5};
+	fun(a,sizeof(a)/sizeof(a[0]));
+	int i;
+	for(i=0;i<10;i++)
+		printf("%d",a[i]);
+	printf("\n");
+	return 0;
+}
+Output: compilation error.
+// output for p[5]=p[6]=p[7]=20;
+1,2,3,4,5,0,0,0,0,0,
+1,2,3,4,5,20,20,20,0,0,
+//Draw memory diagram and analyse the output.
+########################################################################################################3
+Day17: character arrays or strings.
+characetr's ASCII value will be stored.
+Something written in double quotes is called "STRING" example: "Embedded"
+String:
+Sequence of characters terminates with NULL character. Format specifier %s
+ASCII value of NULL character is zero. ( this is assigned by compiler.
+%s ------> Prints the characters untill it finds the first NULL character.
+Program:
+int main()
+{
+	char c[10] = {'E','m','d','e','d','d','e','d'}; // character array.
+	int i;
+	for(i=0;i<10;i++)
+		scanf(%c",&c[i]); 
+	for(i=0;i<10;i++)
+		printf("%c\n",c[i]);
+-------------------
+char c{10}="Embedded"; // string array.
+printf("Enter the string:");
+scanf("%s",&c);
+printf("%s\n",c);
+
+Explanation:
+	____0_________1___________2___________3________4___________		 ___str____ 
+	|		 |			|			|		  |			 |		|    |        |
+	|	'A'	 |	'r'		|	'r'		|	'a'	  |		'y'	 |'\0'  |	 |	100   |
+	|		 |			|			|		  |			 |		|	 |		  |		 
+	|________|__________|___________|_________|__________|______|	 |________|
+	100		  104		 108		112		 116				
+	
+Basic program on Strings:
+#include<stdio.h>
+int main()
+{
+	char str[20];
+	printf("Enter the string:");
+	scanf("%s",str);
+	printf("string is %s\n",str);
+	printf("Enter the string:");
+	scanf("%s",str);
+	printf("string is %s\n",str);
+/*char str[8]="Embedded";
+  printf("%s\n",str); // Embedded@--------> @ is junk character
+  char str[5]="Embedded";
+  printf("%s\n",str); // Embed*/
+}
+Output:
+Enter the string:Embedded
+string is embedded
+Enter the string:Systems
+string is Systems
+--------------------------------
+Example:
+int main()
+{
+	char str[10] = "embedded";
+	printf("%s\n",str); //embedded
+	printf("%s\n",str+3); //edded 
+	str[3]='\0';
+	printf("%s\n",str); //emd
+	printf("%s\n",str+3); //null charcater so output is nothing
+	printf("%s\n",str+4); //dded
+/* 	
+	printf("%d\n",str); //6487552 ------> real addresses
+	printf("%d\n",str+3); //6487555
+	str[3]='\0';
+	printf("%d\n",str); //6487552
+	printf("%d\n",str+3); //6487555
+	printf("%d\n",str+4); //6487556
+*/ //try with %c also
+}
+
+Explanation:
+	____0_________1___________2___________3________4___________		 ___str____ 
+	|		 |			|			|		  |			 |		|    |        |
+	|	'A'	 |	'r'		|	'r'		|	'a'	  |		'y'	 |'\0'  |	 |	100   |
+	|		 |			|			|	'\0'  |			 |		|	 |		  |		 
+	|________|__________|___________|_________|__________|______|	 |________|
+	100		  104		 108		112		 116				
+-----------------------------------------------------------------------------------------
+Program: copying of one array to another array. (integer)
+#include<stdio.h>
+int main()
+{
+	int a[5]={10,-5,21,3,11},int b[5],i;
+	for(i=0;i<5;i++)
+	{
+		b[i]=a[i]; // copying of one array to another array.
+	}
+	for(i=0;i<5;i++)
+	{
+		printf("%d\n",b[i]); //10,-5,21,3,11
+	}
+	return 0;
+}
+-------------
+Program: copying of one array to another array. (string)
+#include<stdio.h>
+int main()
+{
+	char str1[10]= "Embedded",str2[10],i;
+	for(i=0;i<10;i++)
+	{
+		str2[i]=str1[i]; // copying of one array to another array.
+	}
+	for(i=0;i<10;i++)
+	{
+		printf("%c\n",str2[i]); // "Embedded"
+	}
+	return 0;
+}
+-------------------------
+Program: size of string value varuku traverse avtundi
+#include<stdio.h>
+int main()
+{
+	char str1[10]= "Embedded",str2[10],i;
+	for(i=0;str[i];i++)
+	{
+		str2[i]=str1[i]; 
+	}
+	for(i=0;i<10;i++)
+	{
+		printf("%c\n",str2); 
+	}
+	return 0;
+}
+Explanation:
+	____0_________1___________2___________3________..________5___	 ___str1___ 
+	|		 |			|			|		  |			 |		|    |        |
+	|	'E'	 |	'm'		|	'b'		|	'e'	  |	'....'   |'\0'  |	 |	100   |
+	|		 |			|			|		  |			 |		|	 |		  |		 
+	|________|__________|___________|_________|__________|______|	 |________|
+	100		  104		 108		112		 116				
+str2 will be empty in the given output.
+str[8] will false coz it is null character, as we know ASCII value of null character is zero.
+-------------
+Program: string libraries
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char str1[10] = "Embedded", str2[10];
+	strcpy(str2,str1);
+	printf("str1=%s,str2=%s\n",str1,str2);
+	return 0;
+}
+// Here strcpy in-built function considers the null character too. 
+Copying to string is allowed when both strings are of same datatype.
+Library: Is a binary file that has set of function defintions. ( static library, dynamic library) example: libc.o and so on.
+Functions are of 2types;
+	1) Library functions: (printf,scanf,strcpy). --------> functions calls, declarations in Header files, Definitions in library-------> comes from IDE.
+	2) User-defined functions    ------------> Declaration, function call and definition is done by user.
+----------------------
+Program: WPA to implement strcpy in-built function.(own function).
+#include<stdio.h>
+void mystrcpy(char*,char*);
+int main()
+{
+	char str1[10] = "E,mbedded",str2[10];
+	mystrcpy(str2,str1);
+	printf("Str2=%s\n",str2);
+	return 0;
+}
+void mystrcpy(char*str1,char*str2)
+{
+	int i;
+	for(i=0;str1[i];i++)
+		str2[i]=str1[i];
+	str2[i]='\0'; // actually, the llops fails and exits so we have manually implemented '\0'.
+}
+//strcpy basic syntax---> strcpy(destination,source).
+
+Explanation:
+_____________________________________________________________
+|										       				|					
+|main frame in stack										|				
+|															|					
+|	____0_________1___________2__________...________..____	|	 ___str1___		
+|	|		 |			|			|		  |			 |	|	|         |		
+|	|	'E'  |	'm'		|	'd'		|	..	  |	'\0'	 |	|	|	100   |			
+|	|		 |			|			|		  |		     |	|	|		  |		 	
+|	|________|__________|___________|_________|__________|	|	|_________|		
+|    100	104          108          112       116			|							 
+|	____0_________1___________2__________...________..____	|	 ___str2___		main
+|	|	'E'  |	'm'		|	'd'		|	..	  |	'\0'	 |	|	|	      |			
+|	|		 |			|			|		  |		     |	|	|	200	  |		 	
+|	|________|__________|___________|_________|__________|	|	|_________|			
+|    200	104          108          112       116			|									
+|___________________________________________________________|
+|															|					
+|  __str1__				____str2__							|					
+| |		  |				|  		 |							|					
+| | 100   |				|	200	 |							|	mystrcpy			
+| |_______|				|________|							|					
+|___________________________________________________________|
+
+HomeWork: strcat implementation.
+########################################################################################################3
+Day18: Structures and Unions.
+Program: WPA to input student details and print them.
+
+Method1: Traditional way
+#include<stdio.h>
+int main()
+{
+	int rollno=20; //Variable initialization and delcaration
+	char name[20]="Ramesh";
+	float marks=70.5;
+	rollno=25; //Variable value update 
+	strcpy(name,"Suresh");
+	marks=75.5;
+	printf("Enter rollno,name,marks:");
+	scanf("%d%s%f",&rollno,&name,&marks); //Asking input from user
+	printf("Student details are\n");
+	printf("Rollno=%d,name=%s,marks=%f\n",rollno,name,marks);
+	return 0;
+}
+//From the above code, if we want to update or add more student details/ product properties we have to again write which makes program too big or complex.In order to this, we use Structures.
+------------
+Method2: Using Structures.
+Structure: Is an user defined data-type to store heterogeneous/different data types in contigeous memeory location.
+Syntax:
+struct tagname ----> this will be the datatype of structure.
+{
+	<member1>
+	<member2>
+	.....
+};
+
+Example:
+#include<stdio.h>
+#include<string.h>
+// declared struct student as globally. (same as global variable).
+// if main function lopala raste it considers as local struct.
+struct student{
+	int rollno;
+	char name[20];
+	float marks;
+};
+int main()
+{
+	struct student std1 = {20,"Ramesh",70.5}; //Declared and initialized.
+	std1.rollno = 25;
+	strcpy(std1.name,"Suresh");
+	std1.marks = 75.5;
+	printf("Enter rollno,name and marks");
+	scanf("%d%s%f",&std1.rollno,std1.name,&std1.marks);
+	printf("rollno=%d,name=%s,marks=%f\n",std1.rollno,std1.name,std1.marks);
+	return 0;
+}
+
+Explanation:
+	 _rollno______name_________________marks_________
+	 |	20	|	"Ramesh"		|		70.5		|								   
+std1 |______|___________________|___________________|
+
+//line3134 lo memory allocate avtadi user creat chesina data type ki.	
+struct student{
+	int rollno;
+	char name[20];
+	float marks;
+};
+
+NOTE:
+These are just a data type, no memory is allocated to the above, from there we have to derived/create variable name and initialize then the memory gets allocated.	
+Q) How to access structure members using variable?
+A) variablename.member -------> dot operator
+Q) How to access structure members using pointer variable?
+A)  pvariablename->member
+3points here; 
+How to define structure, 
+How to use it,
+How to access it.
+------------------------------
+Program2: structures using Pointer.
+#include<stdio.h>
+int main()
+[
+	int roll no;
+	char name[10];
+	float marks;
+};
+int main()
+{
+	struct student std1 = {15,"Dinesh",6035};
+	struct student *p = &std1;
+	std1.rollno=30;
+	p->rollno = 40;
+	printf("%s\n",std1.name); //Dinesh-----> normal variable accesing using structure
+	printf("%s\n",p->name); //Dinesh-----> pointer variable accesing using structure
+	printf("%s\n",*p.rollno); // roll no chesi then * execute chestadi but here it has to go * then rollno. 
+	//printf("%s\n",(*p).rollno); // *,. ni combine chesi arrow tho represnt chesaru.
+}
+
+Doubt: Pointer use chesinapudu we have to use "&,* operators, why are we using arrow(->) operator?
+A) p->name; ----------> std1.rollno
+						p.rollno ------> *(&std1).rollno
+								 ------> std1.rollno
+	*,& both operators are Unary operators, based on associativity rule it goes from right to left which gives compilation error. 
+
+Explanation:
+	  _rollno______name_________________marks____			__ p_____
+	 |15,30,40|	"Diesh"		|		60.5		|			|		|					   
+std1 |________|_____________|___________________|			|	100	|
+	100		104					114							|_______|
+
+Similar to pointer as explained below;
+int a=10;
+int *p=&a;
+a=20;
+*p=30;
+printf("%d,%d\n",a,*p); //30,30
+
+___p___              ___ a____
+|	   |			|        |
+| 100  |----------->|10,20,30|	
+|______|			|________|
+					100
+/*Object:Ntg but a memeory,Instance of a class. Example we are an instance from our parents. (Parents are classs and we are object).
+class student{
+	public:
+	
+	private:
+	
+};
+	class student std1; ---------> anm instance out of class student.
+*/
+-------------------------
+Program:
+int main()
+{
+	int a=10,b;
+	b=a;
+	printf("a=%d,b=%d\n",a,b);
+	return 0;
+}
+
+Similarly, using structures.
+struct student{
+	int rollno;
+	char name[10];
+	float marks;
+};
+
+struct car
+{
+	char company[10];
+	char model[10];
+	float proce;
+	char colour[10];
+};
+
+int main()
+{
+	struct student std1={25,"Harsha",40.0},std2;
+	std2=std1;
+	struct car car1={"TATA","Altroz",1000000.0,"Grey"};
+	struct car car2;
+	car2=car1;
+	//std2=car1; //Compilation error
+	
+}
+########################################################################################################3
+Day19: Funtions to Structures.	
+	
+#include<stdio.h>
+void fun(int);
+int main()
+{
+	int a=10;
+	fun(a); // function call by value.
+	printf("a=%d\n",a);
+	return 0;
+}
+void fun(int a) //int a=a;
+{
+	a=35;
+}
+Output: a=10 // main frame stack. (if no compilation error, number of printf == number of outputs.)
+_____________________________
+|							|
+|fun frame in complete stack|	
+|		STACK				|
+|		a        	 	    |
+|		10,35 (35 is stored)|
+|---------------------------|
+|							|
+|		main frame in stack	|
+|		a     				|
+|		10  				|
+|___________________________|
+|							|
+|		HEAP				|
+|___________________________|
+|							|
+|			DATA			|
+|___________________________|
+|							|
+|			TEXT			|	
+|___________________________|
+----------------------------------------------
+Program: Structures using function.
+#include<stdio.h>
+#include<string.h>
+
+struct student{
+	{
+		int roll_no;
+		char name[30];
+		int phone_number;
+	};
+void display(struct student st) //if gives error try void display(struct student *st)
+{
+	printf("Roll no:%d\n",st.roll_no);
+	printf("Name:%s\n",st.name);
+	printf("Phone no:%d\n",st.phone_number);
+	st.roll_no=50;
+	printf("Roll no:%d\n",st.roll_no);
+}
+int main()
+{
+	struct student s;
+	s.roll_no=4;
+	strcpy(s.name,"Ron");  // same datatype for "name" variable so strcpy is possible.
+	s.phone_number=888888;
+	display(s);
+	printf("Roll no:%d\n",s.roll_no);
+	return 0;
+}
+Output:
+roll_no 4
+name Ron
+phone_number 888888
+roll_no 50
+roll_no 4 //in main function
+________________________________________________________
+|														|
+|fun frame in complete stack							|
+|	 _rollno______name_________________phoneno__		|	display
+|st |4,50   |	"Ron"		  |		888888		|		|				   
+|   |_______|_________________|_________________|		|
+|-------------------------------------------------------|
+|														|
+|		main frame in stack								|
+|	 _rollno______name_________________phoneno__		|	main
+|s  |  4    |	"Ron"		  |		888888		|		|				   
+|100|_______|_________________|_________________|	    |
+|_______________________________________________________|
+|														|
+|		HEAP											|
+|_______________________________________________________|
+|														|
+|			DATA										|
+|_______________________________________________________|
+|														|
+|			TEXT										|
+|_______________________________________________________|
+---------------------------------------------------------------------
+Program: function using pointer
+#include,stdio.h>
+void fun(int*);
+int main()
+{
+	int a=10;
+	fun(&a); // function call by variable address.
+	printf("a=%d\n",a);
+	return 0;
+}
+void fun(int *p)
+{
+	*p=20;
+}
+Output: a=20
+Explanation:
+_____________________________
+|							|
+|fun frame in complete stack|	
+|		STACK				|
+|		p        	 	    | fun
+| 100 (variable'a' address) | 
+|---------------------------|
+|							|
+|		main frame in stack	|
+|		a =10,20    		|
+|(10 is modified to20) 		|
+| 100(address)              |
+|___________________________|
+-----------------------------------------------
+Program: Structures using pointer
+
+#include<stdio.h>
+#include<string.h>
+
+struct student{
+	{
+		int roll_no;
+		char name[30];
+		int phone_number;
+	};
+void display(struct student *st)
+{
+	printf("Roll no:%d\n",st->roll_no);
+	printf("Name:%s\n",st->name);
+	printf("Phone no:%d\n",st->phone_number);
+	st.roll_no=50;
+	printf("Roll no:%d\n",st->roll_no);
+}
+int main()
+{
+	struct student s;
+	s.roll_no=4;
+	strcpy(s.name,"Ron");  // same datatype for "name" variable so strcpy is possible.
+	s.phone_number=888888;
+	display(&s); // structure pointer
+	printf("Roll no:%d\n",s.roll_no);
+	return 0;
+}
+________________________________________________________
+|														|
+|fun frame in complete stack							|
+|	 _rollno______name_________________phoneno__		|	display
+|st | 100   |	"Ron"		  |		888888		|		|				   
+|   |_______|_________________|_________________|		|
+|-------------------------------------------------------|
+|														|
+|		main frame in stack								|
+|	 _rollno______name_________________phoneno__		|	main
+|s  |  4,50 |	"Ron"		  |		888888		|		|				   
+|100|_______|_________________|_________________|	    |
+|_______________________________________________________|
+|														|
+|		HEAP											|
+|_______________________________________________________|
+|														|
+|			DATA										|
+|_______________________________________________________|
+|														|
+|			TEXT										|
+|_______________________________________________________|
+
+Output:
+4
+Ron
+888888
+50
+50
+'st' lo roll_no points to roll_no in 's' so, 's' lo chnage avtundii.
+---------------------------------------------------------------------	
+Unions:
+
+Let's compare with unions with structure using program.
+Structure: Sum of memories of individual members.
+Example:
+struct student{
+	int roll_no;
+	char name[30];
+	int phone_number;
+};
+int main()
+{
+	struct student std1;
+	std1.rollno=40;
+	strcpy(std1.name,"Dinesh");
+	std1.phone_number = 777823;
+	.
+	.
+}
+	 _rollno______name_________________phone_________
+	 |	40	|	"Dinesh"		|		777823		|								   
+std1 |______|___________________|___________________|
+	 100
+Unions: Memory occupied by the largest member. (single memory matrame untadi adey over-write avtundii.
+Example:
+union student
+{
+	int roll_no;
+	char name[30];
+	int phone_number;
+};
+int main()
+{
+	union student std1;
+	std1.rollno = 40;
+	strcpy(std1.name,"Dinesh");
+	std1.phone_number = 777823;
+}	
+	  _____name___________
+	 |	40,"Dinesh",     |
+	 |    777823		 |										   
+std1 |___________________|
+
+With unions, we have many practical applications like passport, aadhar etc....
+Real-time Example: Passport
+More than one identity(aadhar no, PAN no,Voter id) provide chestadi while filling passport application.------> ikkada Unions use avtadi, adey structure use cheste prathi field ki memory allocate avtadi( each nd evrything ki which is wasting memory.) either of one field fill cheste challu. So unions use avtaii..
+Example: Program
+Structure:
+struct passport{
+	unsigned long int Aadharno;
+	unsigned long int PANno;
+	unsigned long int Votercardno;
+};
+
+	 _aadhar______PAN_________________Voter_________
+	 |	40	|	"Dinesh"		|		777823		|								   
+	 |______|___________________|___________________|
+	 
+Unions:
+union passport
+{
+	unsigned long int Aadharno;
+	unsigned long int PANno;
+	unsigned long int Votercardno;
+};
+
+	  _____aadhar/PAN/Voter___________
+	 |				    			 |
+	 |          					 |										   
+	 |_______________________________|
+#####################################################################################################33
+Day20: Dynamic Memory Allocation(DMA) -----> DATA STRUCTURES
+(today's concept can be learnt as C concept, used in data structures).
+
+DMA: Is a runtime memory allocated in heap-segemnt. As we know we have 4 data segements (stack,heap,data,text). 
+Stack--local variables
+Text-- manam rasina code binary format lo store avtadi, so less bothered.
+Data-global and static variables.
+Heap-- edaina dynamic ga create cheste heap lo store avtai.( OS will tc of it).
+		Q) How OS knows we are storing/using them dynamically?
+		A) using 4APIs.(library functions). Mostly used in Data structures
+			1) malloc()-------> allocates one argument.
+			2) calloc() -------> allocates two argument.
+			3) realloc()
+			4) free-----------> deallocate the allocated memory
+The above 4 functions will be in #include<stdlib.h>
+
+Example: WPA to input 5 integers.
+int main()
+{
+	int a[5];
+	// Array initialize
+	for(i=0;i<5;i++)
+		a[1] = i+1;
+	//Print the array
+	for(i=0;i<5;i++)
+		printf("%d\n",a[i]);
+	return 0;
+}
+// Here 20bytes of data is stored in stack segment
+// Compile time or static time allocation.----------> in stack or data segment
+--------
+1) malloc(): -------> takes one argument as input i.e; unisgned int (+ve integer).Allocates it as bytes in heap segement.(rest all will allocated in stack) 
+It allocates the bits data into bytes and creates base address of bytes. this base address has to be collected by the developer.
+Initial/Default value: Garbage
+Syntax: void *malloc(unsigned int);
+
+Example: We need 20bits (i.e; it chnages to 5bytes) of integer.
+int main()
+{
+	int *p = malloc(5*sizeof(int));
+	int i;
+	for(i=0;i<5;i++)
+		p[i] = i+1;
+	//Access DMA memory
+	for(i=0;i<5;i++)
+		printf("%d\n",p[i]);
+	return 0;
+}
+// Here 20bytes of data is stored in heap segment
+//Run-time or dynamic allocation.----> always in heap segement	
+Explanation:
+	  ________________________________
+	 |		 _______	    		 |
+	 |    p  | 100 |  				 |	stack									   
+	 |_______________________________|
+	 |				    			 |
+	 |   100                    119  |
+     |    __0____1____2____3___4___  |
+	 |   |_1___|_2___|__3__|_4__|_5__|  heap							   
+	 |_______________________________|
+	 |				    			 |
+	 |          					 |										   
+	 |_______________________________|
+As we know, Variable can be accessed by using either variable name(if known) or using pointers(address)
+p[0] = *(p+0)
+	 = *100
+p[1] = *(p+1)
+	 = *(100+1)
+	 = *(104)
+------------------
+2) calloc(): takes/allocates 2 arguments as input but functionality is same.(no.of block, size of ezch block). used in real-time application.( default value will be zero).
+Initial/Default value: zero
+Syntax: void *calloc(block,sizeofblock);
+Example:
+int main()
+{
+	int *p = calloc(5,sizeof(int));
+	int i;
+	for(i=0;i<5;i++)
+		p[i] = i+1;
+	//Access DMA memory
+	for(i=0;i<5;i++)
+		printf("%d\n",p[i]);
+	return 0;
+}
+--------------
+
+int main()
+{
+	int *p = malloc(5*sizeof(int));
+	//Initialize and did few operations.
+	free(p);
+	p=NULL;
+	
+	int *q = malloc(10*sizeof(int));
+	//Initialize and operations.
+	free(q);
+	q=NULL;
+	
+	
+Q) What is memory leak?
+A) 1. Allocated the memory but not using due to no reference address.--> memeory leak ---> to avoid this, take return.
+   2. Keep on allocation DMA,without freeing after its usage results to memory leak------> to avoid this, use free().
+   
+null memory / Unallocated memory ni access cheytaniki try cheste ---------------> Segmentation fault.
+Explanation:
+	  ________________________________
+	 |   ______ 	_______	    	 |
+	 |  p|_100_|   	|__200_|	q	 |										   
+	 |_______________________________|
+	 |	 __________________________	 |
+	 | q |________________________|  |
+     |    _________________________  |
+	 | p |_________________________| |1000byte							   
+	 |___100_________________________|
+	 |				    			 |
+	 |          					 |										   
+	 |_______________________________|
+Developers only know how much time the memory can be utilized.
+OS gives only particular amount of memory, if we try to go-on use the memory the memory gets filled. 
+
+int main()
+{
+	int a=10;
+	<
+	
+	>
+}
+fun()
+{
+	
+	int b;
+}
+
+Q) What is Dangling Pointer?
+A) Pointer that points to the deallocated memory location. 
+From the above example, after freeing the memory of p and q still their addrersses are pointing.
+Q) How to avoid Dangling Pointer?
+A) make those variables as NULL.
+##############################################################################################################################################################################
