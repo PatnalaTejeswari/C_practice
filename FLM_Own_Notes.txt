@@ -3,14 +3,108 @@ Be Patience.
 Every program is written to achieve a functionality.	
 In interview, draw memory diagram for program and explain.	
 Ref the below content, Sir shared files, MCQs and Vector book(Assignment/concept).
+typedef and struct are used to define user-defined data types.
+Array declarations are pointer declarations.
+Cannot change a const type value.
+Example:
+#include <stdio.h>
+2.	    void foo(const int *);
+3.	    int main()
+4.	    {
+5.	        const int i = 10;
+6.	        printf("%d ", i);
+7.	        foo(&i);
+8.	        printf("%d", i);
+9.	 
+10.	    }
+11.	    void foo(const int *i)
+12.	    {
+13.	        *i = 20;
+14.	    }
 
+Primnitive data types: int,char,float.void
+Derived data types: arrays,strings,pointers
+User-defined data types: struct,union,enum,typedef
+
+Rules for defining variables:
+A variable can have alphabets, digits, and underscore.
+A variable name can start with the alphabet, and underscore only. It can't start with a digit.
+No whitespace is allowed within the variable name.
+A variable name must not be any reserved word or keyword, e.g. int, float, etc.
+------
+Types of Variables in C:
+There are many types of variables in c:
+
+local variable
+global variable
+static variable
+automatic variable
+external variable
+
+a) Local Variable:
+A variable that is declared inside the function or block is called a local variable.
+It must be declared at the start of the block.
+
+void function1(){  
+int x=10;//local variable  
+}  
+You must have to initialize the local variable before it is used.
+
+b) Global Variable:
+A variable that is declared outside the function or block is called a global variable. Any function can change the value of the global variable. It is available to all the functions. It must be declared at the start of the block.
+
+int value=20;//global variable  
+void function1(){  
+int x=10;//local variable  
+}  
+
+c) Static Variable:
+A variable that is declared with the static keyword is called static variable. It retains its value between multiple function calls.
+
+void function1(){  
+int x=10;//local variable  
+static int y=10;//static variable  
+x=x+1;  
+y=y+1;  
+printf("%d,%d",x,y);  
+}  
+If you call this function many times, the local variable will print the same value for each function call, e.g, 11,11,11 and so on. But the static variable will print the incremented value in each function call, e.g. 11, 12, 13 and so on.
+
+d) Automatic Variable:
+All variables in C that are declared inside the block, are automatic variables by default. We can explicitly declare an automatic variable using auto keyword.
+
+void main(){  
+int x=10;//local variable (also automatic)  
+auto int y=20;//automatic variable  
+}  
+
+e) External Variable:
+We can share a variable in multiple C source files by using an external variable. To declare an external variable, you need to use extern keyword.
+
+myfile.h
+extern int x=10;//external variable (also global)  
+program1.c
+#include "myfile.h"  
+#include <stdio.h>  
+void printValue(){  
+    printf("Global variable: %d", global_variable);  
+}  
+-------------
 Primitive datatypes---> int, char, float
-Derived data type----> array.
+Derived data type----> array, pointers.
 User data type--------> structures, unions. 
 
 https://www.javatpoint.com/compilation-process-in-c
 Till day7--> 30% syllabus is done.
 Till Loops--> 80% syllabus is done.
+------------
+There are 2 types of qualifiers
+Size qualifiers			short,long			Applicable to only int, double
+Sign qualifiers			signed, unsigned	Applicable to only char and int
+Range:(Applicable to only char and int)
+Unsigned 			0 	to	 (2^n) – 1   	where n is number of bits
+Signed 		        -2^(n – 1) 	to	 2^(n – 1) – 1
+
 #########################################################################################################333
 Day1: printf
 if no compilation error, number of printf == number of outputs.
@@ -24,8 +118,8 @@ printf-> prints the everything inside the double quotes except the format specif
 Compiler knows: 
 1. keywords
 2. constants (1,2,.......)
-3. Operators ( +,-,*)
-4. functions   ( syntax-----> function_name("  "); or function_name()
+3. Operators (+,-,*)
+4. functions (syntax-----> function_name("  "); or function_name()
 
 Basic Syntax of C:
 int main()
@@ -41,14 +135,16 @@ Day2: Variables
 Variable declaration:
 int a; // Declaration
 a=10; // Initialization
-
-1.c----> compile (scans only code line by line, if error unte exe file generate avadu)-----> .exe----------> run (printf statements ikkdada print avtai).
+ _________________________________________________________________________________________________________________________________________________________________________
+|1.c (source code)----> compile (scans only code line by line, if error unte exe file generate avadu)-----> .exe----------> run (printf statements ikkdada print avtai).  |
+|_________________________________________________________________________________________________________________________________________________________________________|
 
 2variables cannot have same name.
-example: int a=20; printf("a=5d\n",a);a=30; int a=40; printf("a=%d\n",a); // here 2times the memory gets allocated & compiler gets confused).
-for run-time inputs, we use scanf() function. scanf("%d", &variablename);-----> syntax.
+example: int a=20; printf("a=%d\n",a);a=30; int a=40; printf("a=%d\n",a); // here 2times the memory gets allocated & compiler gets confused, coz we are again mentioning int a=40;).
+scanf():
+for run-time inputs, we use scanf() function. scanf("%d",&variablename);-----> syntax.
 //Every variable will have some address.
- Example:
+ Example: Sum of 2 integers.
  int main()
  {
  int num1=10,num2=20,sum;
@@ -94,7 +190,7 @@ Variable name rules:
 char datatype---> stores 1byte
 format specifier: %c (Specifies in which format you want to print output).
 It is derived from int data type only.
-char data type is used to store character constant ( Any character resides inside the single quotes is called character constant).
+char data type is used to store character constant (Any character resides inside the single quotes is called character constant). Example: char c= 'a';
 - Every character constant associated with an integer value (ASCII value).
 
 
@@ -105,8 +201,8 @@ int num1=65;
 char c= 'a';
 printf("%d\n",num1); //65
 printf("%c\n",num1); //A
-printf("c=%d\n",c);   //97
-printf("c=%d\n",c);   // a
+printf("c=%d\n",c);  //97
+printf("c=%d\n",c);  // a
 return 0;
 }
 
@@ -117,7 +213,7 @@ printf("%d\n",'&'); //38
 
 IMP:------ Day3:Data Types: Ref source doc for brief
 
-In memeory, every byte has an address.
+In memory, every byte has an address.
 1byte == 8bits
 1KB   == 1024bytes
 1MB   == 1024KB
@@ -133,13 +229,13 @@ int a=12;
 	------------------------------------------
 				103		102			101		100	
 				
-Decimal------> Binary conversion Example: Decimal of (12) = 1100 in binary
-Binary-------> Decimal conversion Example: Binary of (1100)= 12 in decimal
+Decimal to Binary conversion. Example: Decimal of (12) = 1100 in binary
+Binary to Decimal conversion. Example: Binary of (1100)= 12 in decimal
 
 1-bit : No. of combinations are 2 i.e;
 							0---> 0
 							1---> 1
-	1-Bit== 0 to1
+	1-Bit== 0 to 1
 2-bits : No. of combinations are 4 i.e;
 							2 1
 							---
@@ -147,7 +243,7 @@ Binary-------> Decimal conversion Example: Binary of (1100)= 12 in decimal
 							0 1----> 1
 							1 0----> 2
 							1 1----> 3
-	2-Bits== 0to 3
+	2-Bits== 0 to 3
 3-bits : No. of combinations are 8 i.e;
 						   4 2 1
 						   ------
@@ -159,7 +255,7 @@ Binary-------> Decimal conversion Example: Binary of (1100)= 12 in decimal
 						   1 0 1
 						   1 1 0
 						   1 1 1-----> 7
-	3-Bits== 0to7
+	3-Bits== 0 to 7
 4-bits : No. of combinations are 16 i.e;
 						  8  4 2 1
 						  ----------
@@ -181,9 +277,9 @@ Binary-------> Decimal conversion Example: Binary of (1100)= 12 in decimal
 						   1 1 1 1------->15
 	4-Bits== 0 to 15
     8-Bits== 0 to 255
------------> if no.of bits are "n", what is range: 0 to (2*n)-1 .
+-----------> if no.of bits are "n", what is range: 0 to (2*n)-1.
 
-If no. of bits are "n" then combinations possible are 2*n (i.e; 2 power n).
+If no.of bits are "n" then combinations possible are 2*n (i.e; 2 power n).
 				n= 1 then c=2
 				n= 2 then c=4
 				n= 3 then c=8
@@ -214,17 +310,17 @@ If no. of bits are "n" then combinations possible are 2*n (i.e; 2 power n).
   1      1       1       1		 1		1		1		1 -------------> 255  -1
 
 FYI: At 2*7, if it is 0 then +ve and if it is 1 then -ve.
-signed char (8bits)----> -128 to 127 i.e;  -2*(n-1) to 2*(n-1)-1
-if n= 12bits, then the range is 
-if n= 30bits, then the range is 
+signed char (8bits)----> -128 to 127 i.e;  -2*(n-1) to 2*(n-1)-1 -------> example: say n=8 then -2*7 to 2*(7)-1 == -128 to 128-1 == -128 to 127.
+if n= 12bits, then the range is 0 to 4095.
+if n= 30bits, then the range is 0 to 1,07,37,41,823.
 
 8-bits ----------------> min value: 0, max value: 255 (Range: 0 to 255) i.e; 0 to (2*n)-1
 
 Qualifiers: 
 	2kinds of qualifiers: 
 			1. Size Qualifier (short, long)-- Size qualifiers are not applicable on char data-type.
-			2. Sign Qualifier ( Signed, Unsigned)
-								Signed---> Stores both +ve n -ve number.
+			2. Sign Qualifier (Signed, Unsigned)
+								Signed---> Stores both +ve and -ve number.
 								Unsigned--> Stores only +ve numbers.
 					Default sign qualifier is signed.
 char ---------> 1byte --------> (0 to 255)
@@ -233,11 +329,11 @@ int ----------> 4bytes
 long int -----> 8bytes
 
 
-int a=20;
-int a=-20;
+int a=20; //Unsigned
+int a=-20; //Signed
 
-char c=12;
-char c=-12;
+char c=12; //Unsigned
+char c=-12; //Signed
 
 
 int -------> short int
@@ -247,7 +343,7 @@ char -------> signed char
 		|---> unsigned char
 		
 char ---> 1byte %c
-int  ---> 4bytes %d
+int  ---> 4bytes %d or %i
 short int = 10; ---> %hd
 unsigned short int= 10; ----> %hu
 long int = 10; ---> %ld
@@ -275,6 +371,12 @@ Say: 10+20
 				3types: 1) Unary operators ( 1-operand to perform the operation).
 						2) Binary operators (2-operands to perform the operation).
 						3) Ternary opeartors( 3-operands to perform the operation).
+							The ternary operator, also known as the conditional operator, is a concise way to write an if-else statement in a single line. It has the following syntax
+							condition ? expression_if_true : expression_if_false;
+							Here's how it works:
+								If the condition is true, the expression before the : (colon) is evaluated.
+								If the condition is false, the expression after the : is evaluated
+								It's goes from right to left (precedence and associativity rule).
 Example: 
 #include<stdio.h>
 int main()
@@ -299,7 +401,7 @@ Example:
 -3 i.e; min-3
 		min-1-2
 		max-2 = 253
-Signed character range:
+signed character range:
 -128 -127 -126........... -1 0 1 2 3....126 127
 
 unsigned short int: 
@@ -316,15 +418,18 @@ printf("i=%hu\n",i+3);  // 2
 Inorder to calculate easily, use below procedure;
 for max, convert to max+1+x (for this we should know the max and min values of data type)
 		i+3 = 65535+3
-			=max+1+2
-			=0+2
-			=2
+			= max+1+2
+			= min+2
+			= 0+2
+			= 2
 			
 		i+86 = 65535+86
 			 = max+1+85
+			 = min+1
 			 = 0+85
-			 =85
+			 = 85
 for min,convert to min-1-x
+					max-x //min-1 is max
 
 Example: Signed 
 #include<stdio.h>
@@ -393,7 +498,7 @@ sum=num1+num2;
 printf("sum=%d\n",sum);      //50 
 int a,b,c,d;
 a=b=c=num1;
-printf("a=%d,b=%d,c=%d\n",a,b,c,d);    //     20,20,20
+printf("a=%d,b=%d,c=%d\n",a,b,c,d);    //20,20,20
 return 0;
 }
 
@@ -428,7 +533,7 @@ Explanation:
 	j=k;
 	i=j;
 */				
-/&*k=10;
+/*k=10;
 	5=k; // memory should be a variable but here, it is constant.
 	k=5;
 	i=j;
@@ -441,14 +546,14 @@ int main()
 {
 int a=5,b=2;
 int c;
-c=a/b;   // 2
+c=a/b;   //2
 printf("%d\n",c);
 c=a%b;
 printf("%d\n",c); //1
 return 0;
 }
 
-// interger / interger will be the result also integer.
+// interger/interger will be the result also integer.
 ------
 int main()
 {
@@ -472,14 +577,14 @@ example:
 5/2.0
 ==5.0/2.0
 ==2.5 (quotient), 0 is the remainder.
-//Real modular dicison is always "ZERO". In Compiler, if we perform real modular division we get compilation error.
+//Real modular division is always "ZERO". In Compiler, if we perform real modular division we get compilation error.
 
 int main()
 {
 int a=5;
 float b=2,c;
 c=a/b;   
-printf("%f\n",c); //2.5
+printf("%f\n",c); //2.500...
 c=a%b;
 printf("%f\n",c); //Compilation error
 return 0;
@@ -491,9 +596,9 @@ int main()
 {
 float a=5,b=2,c;
 c=a/b;   
-printf("%f\n",c); //
+printf("%f\n",c); //2.500....
 c=a%b;
-printf("%f\n",c); //
+printf("%f\n",c); //Compilation error
 return 0;
 }
 
@@ -656,7 +761,7 @@ printf("%d,%d\n",0&&20,0||20);     // 0,1
 return 0;
 }
 --------------
-Go with precedence and associavity because many operators exist.
+Go with precedence and associativity because many operators exist.
 int main()
 {
 int a=10,b=10,c=0;
@@ -728,7 +833,7 @@ return 0;
 int main()
 {
 int x=10;
-10++;         // (10=(10+1));---------> Variable shouldn't be a constant.
+10++;         //(10=(10+1));---------> Variable shouldn't be a constant.
 printf("x=%d\n",x);
 return 0;
 }
@@ -948,16 +1053,18 @@ Program on Bitwise left shift and right shift:
 int main()
 {
 int a=25,b=20;
-printf("%d\n",a<<2);
-printf("%d\n",b>>2);
-printf("%d\n",a>>2);
-printf("%d\n",-10>>5);
-printf("%d\n",31>>5);
-printf("%d\n",-31>>5);
-printf("%d\n",64>>5);
+printf("%d\n",a<<2); // Left shift a by 2 bits: 25 * 2^2 = 100
+printf("%d\n",b>>2); // Right shift b by 2 bits: 20 / 2^2 = 5
+printf("%d\n",a>>2); // Right shift a by 2 bits: 25 / 2^2 = 6
+printf("%d\n",-10>>5); // Right shift -10 by 5 bits: Implementation-defined (arithmetic right shift)------> do 2's complement for 10 and then perform shift operation, append zero's for vacant postion.
+printf("%d\n",31>>5); // Right shift 31 by 5 bits: 31 / 2^5 = 0
+printf("%d\n",-31>>5); // Right shift -31 by 5 bits: Implementation-defined (arithmetic right shift)
+printf("%d\n",64>>5); // Right shift 64 by 5 bits: 64 / 2^5 = 2
+return 0;
+}
 
 -----
-Program: SWap2numbers without third variable:
+Program: Swap2numbers without third variable:
 int a= 50000,b=75000,c;
 int a=20,b=30;
 b=(a*b)/(a=b);---------> converts to assembly then to binary.
@@ -977,9 +1084,10 @@ If we do int a= 50000,b=75000; ----> the output with compiler will be imperfect 
 	 printf("a=%d,b=%d\n",a,b);
 	 return0;
 	 }
-########################################################################################################3
+######################################################################################################################################################################################
+
 Day8: Control Statements.
-Control statements: COntrol the flow of execution of instructions. (we can skip or run the same instruction multiple times).
+Control statements: Control the flow of execution of instructions. (we can skip or run the same instruction multiple times).
 		1. Conditional control statement.
 		2. Un-conditional control statement.
 
@@ -990,14 +1098,15 @@ int main()
 {
 int num1, num2;
 printf("Enter num1 and num2");
-scanf("%d%d",&num1,num2);
+scanf("%d%d",&num1,&num2);
 num1>num2;
 printf("%d is highest number\n",num1);
 num2>num1;
 printf("%d is highest number\n",num2);
 return 0;
 }
-// In the above code, both the printf will print, but ere our criteria is to print either yes or no so we have a concept in C i.e; CONTROL STATEMENTS (changes the normal flow).
+
+// In the above code, both the printf will print, but here our criteria is to print either yes (or) no so we have a concept in C i.e; CONTROL STATEMENTS (changes the normal flow).
 
 1) if condition: It allows if the condition is TRUE.
  syntax:
@@ -1022,12 +1131,11 @@ printf("%d is highest number\n",num2);
 return 0;
 }
 Output: 35 is highest number. (num1=20,num2=35)
-// From the above code, the CPU time/ utulization will not be effective, coz all the if statements executes).
+// From the above code, the CPU time/ utilization will not be effective, coz all the if statements executes).
 
 2) if...else condition:
  else condtion depends upon if statement.(Here's no specific condition that else should also have condition.)
-	We can have multiple if blocks without an else block.
-	where as we cannot have an else block without an if block as precedor.
+	We can have multiple if-blocks without an else block, where as we cannot have an else block without an if block as precedor.
 Examples:
 #include<stdio.h>
 int main()
@@ -1053,7 +1161,7 @@ int main()
 {
 else            
 {
-printf("Hello world"); // preceder if is missing
+printf("Hello world"); // preceder "if" is missing
 return 0;
 }
 }
@@ -1097,15 +1205,15 @@ return 0;
 }
 Output: Hello world.
 
-No {} for if condition, here the drawback is the immediate statement of if is considered as the condtion and the next lines will be executed.(remaining will go under main function.
+No {} for if-condition, here the drawback is the immediate statement of "if" is considered as the condtion and the next lines will be executed.(remaining will go under main function.)
 ------------------------
-2-inputs and highest 
+2-inputs and highest number among them.
 #include<stdio.h>
 int main()
 {
 int num1, num2;
 printf("Enter num1 and num2");
-scanf("%d%d",&num1,num2);
+scanf("%d%d",&num1,&num2);
 if(num1>num2)
 printf("%d is highest number\n",num1);
 else
@@ -1140,7 +1248,7 @@ printf("%d is highest number\n",num3);
 
 Here we can use any number of else if condition.
 ---------------------
-Program: WPA to input an positive integer check whether it is even or odd
+Program: WPA to input an positive integer check whether it is even or odd (Task: Implement using array too).
 #include<stdio.h>
 int main()
 {
@@ -1224,15 +1332,16 @@ return 0;
 }
 Output: Compilation error.
 
-WPA to input an alphabet/character and find whether given character is ovwel or consonant.---------> Homework
+Program: WPA to input an alphabet/character and find whether given character is vowel or consonant.---------> Homework
 ##############################################################################################################
 Day9: Control Statements cont... Scope, Lifetime
+
 #include<stdio.h>
 int b;
 int main()
 {
 int a;
-printf("a=%d\n",a);  // garbage stores coz we haven't declared any value.
+printf("a=%d\n",a);  // garbage stores coz we haven't initialized any value.
 a=10;
 printf("a=%d\n",a);
 return 0;
@@ -1241,7 +1350,7 @@ return 0;
 Any variable that resides inside the function is called "Local Variable".---> inside stack segment
 Default value of local variable is GARBAGE. (from above program int a)
 Variables that are declared outside the main function is called "Gobal Variable".-----> inside the data segment 
-Default value of glocal variable is Zero.(from above program int b) 
+Default value of global variable is Zero.(from above program int b) 
 																	 ________________________
 IMP concept:	Memory representation for below code				|						|	
 																	|	Stack segement		|
@@ -1258,14 +1367,14 @@ printf("a=%d\n",a);													|						|
 return 0;															|	Text segement		|
 }																	|						|
 																	|_______________________|
-<---------------------HDD------------------------------------------>|<----------RAM-------->
+<---------------------HDD------------------------------------------>|<----------RAM-------->|
 
 Variable can be defined using 2-properties:
-			1. Data type ----> defines size-of memory for variable.
+			1. Data type -----> Defines size-of memory for variable.
 			2. Storage class--> Defines 	
 									Default value
 									Memory
-									Scope ( Accessibility)
+									Scope (Accessibility)
 									Life time
 Storage classes: 4types; all are keywords.
 		1. auto
@@ -1285,7 +1394,7 @@ return 0;
 }
 
 local variable: auto
-default value; garbage
+default value: garbage
 memory: stack
 scope: block
 life time: function life time.
@@ -1305,7 +1414,7 @@ NOTE: 2-varibales cannot have same name in same scope..
 We can have 2 or more variables with same name in different scope.
 SCOPE== ACCESSIBILTY
 
-Block of code lo matrame the particular variable ki scope unatlu if same varibale 2 different scopes lo unte printf ki ae value aite undho adi print avtundii, ref below code clearly.
+Block of code lo matrame the particular variable ki scope unatlu if same variable 2 different scopes lo unte printf ki ae value aite undho adi print avtundii, ref below code clearly.
 
 Example1:
 #include<stdio.h>
@@ -1321,7 +1430,7 @@ int main()
 	return 0;
 }
 -----------
-#include,stdio.h>
+#include<stdio.h>
 {
 	{
 		int a=10;
@@ -1329,10 +1438,11 @@ int main()
 	printf("a=%d\n",a); // "a" is alive, but still we cannot access.
 	return 0;
 }
-Output: Compilation error (varibale a is out of scope)
+Output: Compilation error (variable a is out of scope)
+
 Every function has its own stack frame(local variable's reside), it gets destroyed when the function ends.
 --ntg but oka manishini oka urlo/place undi and manam verey place lo undi piliste, that person cant respond coz he is not near to them(vinipistene palukutaru) here vinipinchatam is scope.--> scope lo leru.
-Life-Time: when memory allocated , when destroyed.
+Life-Time: when memory allocated, when destroyed.
 When the stack frame gets destroyed, the memory also gets destroyed. (which means aa function lo unna anni instructions execute aiyi return 0; vachake stack frame destroy avtadi). 
 
 Example2:
@@ -1387,7 +1497,7 @@ int main()
 
 -----
 int main()
-[
+{
 int a=10;
 {
 printf("a=%d\n",a);
@@ -1413,10 +1523,12 @@ int main()
 	printf("a=%d\n",a); // cant access the variable.
 	return 0;
 }
-Output: Compilation error.
+Output: Compilation error.(undeclared variable 'a' --> line 1523)
 --------------------------------------------
 The scope of global variable is throughtout the program.
 Example: Global variable
+
+#include<stdio.h>
 int a=20,b=30; //global vaiable
 int main()
 {
@@ -1427,7 +1539,8 @@ int main()
 	return 0;
 }
 ------------
-int a=20,b=30; // 
+#include<stdio.h>
+int a=20,b=30; // global vaiable
 int main()
 {
 	int a=50,b=40; 
